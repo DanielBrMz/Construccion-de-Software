@@ -1,0 +1,3391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title data-rh="true">
+    Javascript Language
+  </title>
+  <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-blue.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="STATIC">
+    html {
+      box-sizing: border-box;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      color: rgba(0, 0, 0, 0.8);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    dl,
+    dd,
+    ol,
+    ul,
+    menu,
+    figure,
+    blockquote,
+    p,
+    pre,
+    form {
+      margin: 0;
+    }
+
+    menu,
+    ol,
+    ul {
+      padding: 0;
+      list-style: none;
+      list-style-image: none;
+    }
+
+    main {
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a,
+    button,
+    input {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img,
+    svg {
+      vertical-align: middle;
+    }
+
+    button {
+      background: transparent;
+      overflow: visible;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      margin: 0;
+    }
+
+    :root {
+      --reach-tabs: 1;
+      --reach-menu-button: 1;
+    }
+
+    #speechify-root {
+      font-family: Sohne, sans-serif;
+    }
+
+    div[data-popper-reference-hidden="true"] {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /*XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>*/
+    .hljs {
+      background: #fff;
+      color: black;
+    }
+
+    /* Gray DOCTYPE selectors like WebKit */
+    .xml .hljs-meta {
+      color: #c0c0c0;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #007400;
+    }
+
+    .hljs-tag,
+    .hljs-attribute,
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-name {
+      color: #aa0d91;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable {
+      color: #3f6e74;
+    }
+
+    .hljs-code,
+    .hljs-string,
+    .hljs-meta .hljs-string {
+      color: #c41a16;
+    }
+
+    .hljs-regexp,
+    .hljs-link {
+      color: #0e0eff;
+    }
+
+    .hljs-title,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-number {
+      color: #1c00cf;
+    }
+
+    .hljs-section,
+    .hljs-meta {
+      color: #643820;
+    }
+
+    .hljs-title.class_,
+    .hljs-class .hljs-title,
+    .hljs-type,
+    .hljs-built_in,
+    .hljs-params {
+      color: #5c2699;
+    }
+
+    .hljs-attr {
+      color: #836c28;
+    }
+
+    .hljs-subst {
+      color: #000;
+    }
+
+    .hljs-formula {
+      background-color: #eee;
+      font-style: italic;
+    }
+
+    .hljs-addition {
+      background-color: #baeeba;
+    }
+
+    .hljs-deletion {
+      background-color: #ffc8bd;
+    }
+
+    .hljs-selector-id,
+    .hljs-selector-class {
+      color: #9b703f;
+    }
+
+    .hljs-doctag,
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE">
+    .a {
+      font-family: medium-content-sans-serif-font, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .b {
+      font-weight: 400;
+    }
+
+    .c {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    .l {
+      display: block;
+    }
+
+    .m {
+      position: sticky;
+    }
+
+    .n {
+      top: 0;
+    }
+
+    .o {
+      z-index: 500;
+    }
+
+    .p {
+      padding: 0 24px;
+    }
+
+    .q {
+      align-items: center;
+    }
+
+    .r {
+      border-bottom: solid 1px #f2f2f2;
+    }
+
+    .y {
+      height: 41px;
+    }
+
+    .z {
+      line-height: 20px;
+    }
+
+    .ab {
+      display: flex;
+    }
+
+    .ac {
+      height: 57px;
+    }
+
+    .ae {
+      flex: 1 0 auto;
+    }
+
+    .af {
+      color: inherit;
+    }
+
+    .ag {
+      fill: inherit;
+    }
+
+    .ah {
+      font-size: inherit;
+    }
+
+    .ai {
+      border: inherit;
+    }
+
+    .aj {
+      font-family: inherit;
+    }
+
+    .ak {
+      letter-spacing: inherit;
+    }
+
+    .al {
+      font-weight: inherit;
+    }
+
+    .am {
+      padding: 0;
+    }
+
+    .an {
+      margin: 0;
+    }
+
+    .ao {
+      cursor: pointer;
+    }
+
+    .ap:disabled {
+      cursor: not-allowed;
+    }
+
+    .aq:disabled {
+      color: #6b6b6b;
+    }
+
+    .ar:disabled {
+      fill: #6b6b6b;
+    }
+
+    .au {
+      fill: rgba(0, 0, 0, 1);
+    }
+
+    .av {
+      height: 22px;
+    }
+
+    .aw {
+      margin-left: 16px;
+    }
+
+    .ax {
+      border: none;
+    }
+
+    .ay {
+      border-radius: 20px;
+    }
+
+    .az {
+      width: 240px;
+    }
+
+    .ba {
+      background: #f9f9f9;
+    }
+
+    .bb path {
+      fill: #6b6b6b;
+    }
+
+    .bd {
+      outline: none;
+    }
+
+    .be {
+      font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .bf {
+      font-size: 14px;
+    }
+
+    .bg {
+      width: 100%;
+    }
+
+    .bh {
+      padding: 10px 20px 10px 0;
+    }
+
+    .bi {
+      background-color: transparent;
+    }
+
+    .bj {
+      color: #242424;
+    }
+
+    .bk::placeholder {
+      color: #6b6b6b;
+    }
+
+    .bl {
+      display: inline-block;
+    }
+
+    .bm {
+      margin-left: 12px;
+    }
+
+    .bn {
+      margin-right: 12px;
+    }
+
+    .bo {
+      border-radius: 4px;
+    }
+
+    .bp {
+      margin-left: 24px;
+    }
+
+    .bq {
+      height: 24px;
+    }
+
+    .bw {
+      background-color: #f9f9f9;
+    }
+
+    .bx {
+      border-radius: 50%;
+    }
+
+    .by {
+      height: 32px;
+    }
+
+    .bz {
+      width: 32px;
+    }
+
+    .ca {
+      justify-content: center;
+    }
+
+    .cg {
+      max-width: 680px;
+    }
+
+    .ch {
+      min-width: 0;
+    }
+
+    .ci {
+      animation: k1 1.2s ease-in-out infinite;
+    }
+
+    .cj {
+      height: 100vh;
+    }
+
+    .ck {
+      margin-bottom: 16px;
+    }
+
+    .cl {
+      margin-top: 48px;
+    }
+
+    .cm {
+      align-items: flex-start;
+    }
+
+    .cn {
+      flex-direction: column;
+    }
+
+    .co {
+      justify-content: space-between;
+    }
+
+    .cp {
+      margin-bottom: 24px;
+    }
+
+    .cv {
+      width: 80%;
+    }
+
+    .cw {
+      background-color: #f2f2f2;
+    }
+
+    .dc {
+      height: 44px;
+    }
+
+    .dd {
+      width: 44px;
+    }
+
+    .de {
+      margin: auto 0;
+    }
+
+    .df {
+      margin-bottom: 4px;
+    }
+
+    .dg {
+      height: 16px;
+    }
+
+    .dh {
+      width: 120px;
+    }
+
+    .di {
+      width: 80px;
+    }
+
+    .do {
+      margin-bottom: 8px;
+    }
+
+    .dp {
+      width: 96%;
+    }
+
+    .dq {
+      width: 98%;
+    }
+
+    .dr {
+      width: 81%;
+    }
+
+    .ds {
+      margin-left: 8px;
+    }
+
+    .dt {
+      color: #6b6b6b;
+    }
+
+    .du {
+      font-size: 13px;
+    }
+
+    .dv {
+      height: 100%;
+    }
+
+    .eo {
+      color: #ffffff;
+    }
+
+    .ep {
+      fill: #ffffff;
+    }
+
+    .eq {
+      background: rgba(102, 138, 170, 1);
+    }
+
+    .er {
+      border-color: rgba(102, 138, 170, 1);
+    }
+
+    .ev:disabled {
+      cursor: inherit !important;
+    }
+
+    .ew:disabled {
+      opacity: 0.3;
+    }
+
+    .ex:disabled:hover {
+      background: rgba(102, 138, 170, 1);
+    }
+
+    .ey:disabled:hover {
+      border-color: rgba(102, 138, 170, 1);
+    }
+
+    .ez {
+      border-radius: 99em;
+    }
+
+    .fa {
+      border-width: 1px;
+    }
+
+    .fb {
+      border-style: solid;
+    }
+
+    .fc {
+      box-sizing: border-box;
+    }
+
+    .fd {
+      text-decoration: none;
+    }
+
+    .fe {
+      text-align: center;
+    }
+
+    .fh {
+      margin-right: 32px;
+    }
+
+    .fi {
+      position: relative;
+    }
+
+    .fj {
+      fill: #6b6b6b;
+    }
+
+    .fm {
+      background: transparent;
+    }
+
+    .fn svg {
+      margin-left: 4px;
+    }
+
+    .fo svg {
+      fill: #6b6b6b;
+    }
+
+    .fq {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .fr {
+      position: absolute;
+    }
+
+    .ft {
+      display: none;
+    }
+
+    .fz {
+      margin: 0 24px;
+    }
+
+    .gd {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .ge {
+      border: 1px solid #f2f2f2;
+    }
+
+    .gf {
+      box-shadow: 0 1px 4px #f2f2f2;
+    }
+
+    .gg {
+      max-height: 100vh;
+    }
+
+    .gh {
+      overflow-y: auto;
+    }
+
+    .gi {
+      left: 0;
+    }
+
+    .gj {
+      top: calc(100vh + 100px);
+    }
+
+    .gk {
+      bottom: calc(100vh + 100px);
+    }
+
+    .gl {
+      width: 10px;
+    }
+
+    .gm {
+      pointer-events: none;
+    }
+
+    .gn {
+      word-break: break-word;
+    }
+
+    .go {
+      word-wrap: break-word;
+    }
+
+    .gp:after {
+      display: block;
+    }
+
+    .gq:after {
+      content: "";
+    }
+
+    .gr:after {
+      clear: both;
+    }
+
+    .gs {
+      line-height: 1.23;
+    }
+
+    .gt {
+      letter-spacing: 0;
+    }
+
+    .gu {
+      font-style: normal;
+    }
+
+    .gv {
+      font-weight: 700;
+    }
+
+    .hq {
+      margin-bottom: -0.27em;
+    }
+
+    .hr {
+      line-height: 1.394;
+    }
+
+    .ir {
+      align-items: baseline;
+    }
+
+    .is {
+      width: 48px;
+    }
+
+    .it {
+      height: 48px;
+    }
+
+    .iu {
+      border: 2px solid rgba(255, 255, 255, 1);
+    }
+
+    .iv {
+      z-index: 0;
+    }
+
+    .iw {
+      box-shadow: none;
+    }
+
+    .ix {
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .iy {
+      margin-left: -12px;
+    }
+
+    .iz {
+      width: 28px;
+    }
+
+    .ja {
+      height: 28px;
+    }
+
+    .jb {
+      z-index: 1;
+    }
+
+    .jc {
+      width: 24px;
+    }
+
+    .jd {
+      margin-bottom: 2px;
+    }
+
+    .je {
+      flex-wrap: nowrap;
+    }
+
+    .jf {
+      font-size: 16px;
+    }
+
+    .jg {
+      line-height: 24px;
+    }
+
+    .ji {
+      margin: 0 8px;
+    }
+
+    .jj {
+      display: inline;
+    }
+
+    .jk {
+      color: rgba(102, 138, 170, 1);
+    }
+
+    .jl {
+      fill: rgba(102, 138, 170, 1);
+    }
+
+    .jo {
+      flex: 0 0 auto;
+    }
+
+    .jr {
+      flex-wrap: wrap;
+    }
+
+    .ju {
+      white-space: pre-wrap;
+    }
+
+    .jv {
+      margin-right: 4px;
+    }
+
+    .jw {
+      overflow: hidden;
+    }
+
+    .jx {
+      max-height: 20px;
+    }
+
+    .jy {
+      text-overflow: ellipsis;
+    }
+
+    .jz {
+      display: -webkit-box;
+    }
+
+    .ka {
+      -webkit-line-clamp: 1;
+    }
+
+    .kb {
+      -webkit-box-orient: vertical;
+    }
+
+    .kc {
+      word-break: break-all;
+    }
+
+    .ke {
+      padding-left: 8px;
+    }
+
+    .kf {
+      padding-right: 8px;
+    }
+
+    .lg>* {
+      flex-shrink: 0;
+    }
+
+    .lh {
+      overflow-x: scroll;
+    }
+
+    .li::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lj {
+      scrollbar-width: none;
+    }
+
+    .lk {
+      -ms-overflow-style: none;
+    }
+
+    .ll {
+      width: 74px;
+    }
+
+    .lm {
+      flex-direction: row;
+    }
+
+    .ln {
+      z-index: 2;
+    }
+
+    .lr {
+      border: 0;
+    }
+
+    .ls {
+      fill: rgba(117, 117, 117, 1);
+    }
+
+    .lv {
+      outline: 0;
+    }
+
+    .lw {
+      user-select: none;
+    }
+
+    .lx>svg {
+      pointer-events: none;
+    }
+
+    .mg {
+      cursor: progress;
+    }
+
+    .mh {
+      margin-left: 4px;
+    }
+
+    .mi {
+      margin-top: 0px;
+    }
+
+    .mj {
+      opacity: 1;
+    }
+
+    .mk {
+      padding: 4px 0;
+    }
+
+    .mn {
+      width: 16px;
+    }
+
+    .mp {
+      display: inline-flex;
+    }
+
+    .mv {
+      max-width: 100%;
+    }
+
+    .mw {
+      padding: 8px 2px;
+    }
+
+    .mx svg {
+      color: #6b6b6b;
+    }
+
+    .no {
+      margin-left: auto;
+    }
+
+    .np {
+      margin-right: auto;
+    }
+
+    .nq {
+      max-width: 1792px;
+    }
+
+    .nw {
+      clear: both;
+    }
+
+    .ny {
+      cursor: zoom-in;
+    }
+
+    .nz {
+      z-index: auto;
+    }
+
+    .ob {
+      height: auto;
+    }
+
+    .oc {
+      margin-top: 10px;
+    }
+
+    .od {
+      max-width: 728px;
+    }
+
+    .og {
+      line-height: 1.58;
+    }
+
+    .oh {
+      letter-spacing: -0.004em;
+    }
+
+    .oi {
+      font-family: source-serif-pro, Georgia, Cambria, "Times New Roman",
+        Times, serif;
+    }
+
+    .pb {
+      margin-bottom: -0.46em;
+    }
+
+    .pc {
+      margin-top: 32px;
+    }
+
+    .pd {
+      margin-bottom: 14px;
+    }
+
+    .pe {
+      padding-top: 24px;
+    }
+
+    .pf {
+      padding-bottom: 10px;
+    }
+
+    .pg {
+      background-color: #000000;
+    }
+
+    .ph {
+      height: 3px;
+    }
+
+    .pi {
+      width: 3px;
+    }
+
+    .pj {
+      margin-right: 20px;
+    }
+
+    .pk {
+      text-decoration: underline;
+    }
+
+    .pl {
+      line-height: 1.12;
+    }
+
+    .pm {
+      letter-spacing: -0.022em;
+    }
+
+    .pn {
+      font-weight: 600;
+    }
+
+    .qg {
+      margin-bottom: -0.28em;
+    }
+
+    .qh {
+      line-height: 1.18;
+    }
+
+    .qv {
+      margin-bottom: -0.31em;
+    }
+
+    .rg {
+      max-width: 660px;
+    }
+
+    .rh {
+      max-width: 331px;
+    }
+
+    .ri {
+      list-style-type: disc;
+    }
+
+    .rj {
+      margin-left: 30px;
+    }
+
+    .rk {
+      padding-left: 0px;
+    }
+
+    .rl {
+      font-style: italic;
+    }
+
+    .rr {
+      max-width: 420px;
+    }
+
+    .rs {
+      max-width: 238px;
+    }
+
+    .rt {
+      max-width: 431px;
+    }
+
+    .ru {
+      max-width: 520px;
+    }
+
+    .rv {
+      max-width: 415px;
+    }
+
+    .rw {
+      max-width: 302px;
+    }
+
+    .rx {
+      max-width: 332px;
+    }
+
+    .ry {
+      max-width: 549px;
+    }
+
+    .rz {
+      max-width: 259px;
+    }
+
+    .sa {
+      max-width: 314px;
+    }
+
+    .sb {
+      max-width: 372px;
+    }
+
+    .sc {
+      max-width: 441px;
+    }
+
+    .sd {
+      max-width: 509px;
+    }
+
+    .se {
+      max-width: 437px;
+    }
+
+    .sf {
+      max-width: 345px;
+    }
+
+    .sg {
+      max-width: 642px;
+    }
+
+    .sh {
+      max-width: 205px;
+    }
+
+    .si {
+      max-width: 263px;
+    }
+
+    .sj {
+      max-width: 268px;
+    }
+
+    .sk {
+      max-width: 361px;
+    }
+
+    .sq {
+      box-shadow: inset 0 0 0 1px #f2f2f2;
+    }
+
+    .sr {
+      padding: 0px;
+    }
+
+    .ss {
+      padding: 16px 20px;
+    }
+
+    .st {
+      flex: 1 1 auto;
+    }
+
+    .sv {
+      max-height: 40px;
+    }
+
+    .sw {
+      -webkit-line-clamp: 2;
+    }
+
+    .sx {
+      margin-top: 8px;
+    }
+
+    .sy {
+      margin-top: 12px;
+    }
+
+    .sz {
+      width: 160px;
+    }
+
+    .ta {
+      background-image: url(https://miro.medium.com/v2/da:true/resize:fit:320/0*CkJMZeaiWvZuyhU4);
+    }
+
+    .tb {
+      background-origin: border-box;
+    }
+
+    .tc {
+      background-size: cover;
+    }
+
+    .td {
+      height: 167px;
+    }
+
+    .te {
+      background-position: 50% 50%;
+    }
+
+    .tf {
+      background-image: url(https://miro.medium.com/v2/resize:fit:320/1*IHcsI8oOdaU6myihjShlrA.png);
+    }
+
+    .tg {
+      background-image: url(https://miro.medium.com/v2/da:true/resize:fit:320/0*WLId-WgYwuz9YBHc);
+    }
+
+    .th {
+      overflow-x: auto;
+    }
+
+    .ti {
+      font-family: source-code-pro, Menlo, Monaco, "Courier New", Courier,
+        monospace;
+    }
+
+    .tj {
+      padding: 32px;
+    }
+
+    .tk {
+      border: 1px solid #e5e5e5;
+    }
+
+    .tl {
+      line-height: 1.4;
+    }
+
+    .tm {
+      margin-top: -0.2em;
+    }
+
+    .tn {
+      margin-bottom: -0.2em;
+    }
+
+    .to {
+      white-space: pre;
+    }
+
+    .tp {
+      min-width: fit-content;
+    }
+
+    .tq {
+      padding: 2px 4px;
+    }
+
+    .tr {
+      font-size: 75%;
+    }
+
+    .ts>strong {
+      font-family: inherit;
+    }
+
+    .tt {
+      list-style-type: decimal;
+    }
+
+    .tu {
+      max-width: 990px;
+    }
+
+    .tv {
+      margin-bottom: 26px;
+    }
+
+    .tw {
+      margin-top: 6px;
+    }
+
+    .tx {
+      margin-right: 8px;
+    }
+
+    .ty {
+      padding: 8px 16px;
+    }
+
+    .tz {
+      border-radius: 100px;
+    }
+
+    .ua {
+      transition: background 300ms ease;
+    }
+
+    .uc {
+      white-space: nowrap;
+    }
+
+    .ud {
+      border-top: none;
+    }
+
+    .uj {
+      height: 52px;
+    }
+
+    .uk {
+      max-height: 52px;
+    }
+
+    .ul {
+      box-sizing: content-box;
+    }
+
+    .um {
+      position: static;
+    }
+
+    .uo {
+      max-width: 155px;
+    }
+
+    .uz {
+      align-items: flex-end;
+    }
+
+    .va {
+      width: 76px;
+    }
+
+    .vb {
+      height: 76px;
+    }
+
+    .vc {
+      border: 2px solid #f9f9f9;
+    }
+
+    .vd {
+      height: 72px;
+    }
+
+    .ve {
+      width: 72px;
+    }
+
+    .vf {
+      margin-left: -16px;
+    }
+
+    .vg {
+      width: 36px;
+    }
+
+    .vh {
+      height: 36px;
+    }
+
+    .vi {
+      width: auto;
+    }
+
+    .vj {
+      stroke: #f2f2f2;
+    }
+
+    .vk {
+      color: #f2f2f2;
+    }
+
+    .vl {
+      fill: #f2f2f2;
+    }
+
+    .vm {
+      background: #f2f2f2;
+    }
+
+    .vn {
+      border-color: #f2f2f2;
+    }
+
+    .vt {
+      font-weight: 500;
+    }
+
+    .vu {
+      font-size: 24px;
+    }
+
+    .vv {
+      line-height: 30px;
+    }
+
+    .vw {
+      letter-spacing: -0.016em;
+    }
+
+    .vx {
+      margin-top: 16px;
+    }
+
+    .vy {
+      height: 0px;
+    }
+
+    .vz {
+      border-bottom: solid 1px #e5e5e5;
+    }
+
+    .wf {
+      margin-top: 72px;
+    }
+
+    .wg {
+      padding: 24px 0;
+    }
+
+    .wh {
+      margin-bottom: 0px;
+    }
+
+    .wi {
+      margin-right: 16px;
+    }
+
+    .as:hover:not(:disabled) {
+      color: rgba(25, 25, 25, 1);
+    }
+
+    .at:hover:not(:disabled) {
+      fill: rgba(25, 25, 25, 1);
+    }
+
+    .es:hover {
+      background: rgba(90, 118, 144, 1);
+    }
+
+    .et:hover {
+      border-color: rgba(90, 118, 144, 1);
+    }
+
+    .eu:hover {
+      cursor: pointer;
+    }
+
+    .fk:hover {
+      color: #242424;
+    }
+
+    .fl:hover {
+      fill: #242424;
+    }
+
+    .fp:hover svg {
+      fill: #242424;
+    }
+
+    .fs:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .jh:hover {
+      text-decoration: underline;
+    }
+
+    .jm:hover:not(:disabled) {
+      color: rgba(90, 118, 144, 1);
+    }
+
+    .jn:hover:not(:disabled) {
+      fill: rgba(90, 118, 144, 1);
+    }
+
+    .lu:hover {
+      fill: rgba(8, 8, 8, 1);
+    }
+
+    .ml:hover {
+      fill: #000000;
+    }
+
+    .mm:hover p {
+      color: #000000;
+    }
+
+    .mo:hover {
+      color: #000000;
+    }
+
+    .my:hover svg {
+      color: #000000;
+    }
+
+    .ub:hover {
+      background-color: #f2f2f2;
+    }
+
+    .vo:hover {
+      background: #f2f2f2;
+    }
+
+    .vp:hover {
+      border-color: #f2f2f2;
+    }
+
+    .vq:hover {
+      cursor: wait;
+    }
+
+    .vr:hover {
+      color: #f2f2f2;
+    }
+
+    .vs:hover {
+      fill: #f2f2f2;
+    }
+
+    .bc:focus-within path {
+      fill: #242424;
+    }
+
+    .lt:focus {
+      fill: rgba(8, 8, 8, 1);
+    }
+
+    .mz:focus svg {
+      color: #000000;
+    }
+
+    .oa:focus {
+      transform: scale(1.01);
+    }
+
+    .ly:active {
+      border-style: none;
+    }
+
+    .code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+      font-size: 0.9em;
+      background-color: #ddd;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="all and (min-width: 1080px)">
+    .d {
+      display: none;
+    }
+
+    .bv {
+      width: 64px;
+    }
+
+    .cf {
+      margin: 0 64px;
+    }
+
+    .cu {
+      height: 48px;
+    }
+
+    .db {
+      margin-bottom: 52px;
+    }
+
+    .dn {
+      margin-bottom: 48px;
+    }
+
+    .ee {
+      font-size: 14px;
+    }
+
+    .ef {
+      line-height: 20px;
+    }
+
+    .el {
+      font-size: 13px;
+    }
+
+    .em {
+      padding: 5px 12px;
+    }
+
+    .fg {
+      display: flex;
+    }
+
+    .fy {
+      margin-bottom: 68px;
+    }
+
+    .gc {
+      max-width: 680px;
+    }
+
+    .hm {
+      font-size: 42px;
+    }
+
+    .hn {
+      margin-top: 1.19em;
+    }
+
+    .ho {
+      line-height: 52px;
+    }
+
+    .hp {
+      letter-spacing: -0.011em;
+    }
+
+    .ie {
+      font-size: 22px;
+    }
+
+    .if {
+      margin-top: 0.92em;
+    }
+
+    .ig {
+      line-height: 28px;
+    }
+
+    .iq {
+      align-items: center;
+    }
+
+    .ks {
+      border-top: solid 1px #f2f2f2;
+    }
+
+    .kt {
+      border-bottom: solid 1px #f2f2f2;
+    }
+
+    .ku {
+      margin: 32px 0 0;
+    }
+
+    .kv {
+      padding: 3px 8px;
+    }
+
+    .le>* {
+      margin-right: 24px;
+    }
+
+    .lf> :last-child {
+      margin-right: 0;
+    }
+
+    .mf {
+      margin-top: 0px;
+    }
+
+    .mu {
+      margin: 0;
+    }
+
+    .nv {
+      margin-top: 56px;
+    }
+
+    .ox {
+      font-size: 20px;
+    }
+
+    .oy {
+      margin-top: 2.14em;
+    }
+
+    .oz {
+      line-height: 32px;
+    }
+
+    .pa {
+      letter-spacing: -0.003em;
+    }
+
+    .qc {
+      font-size: 24px;
+    }
+
+    .qd {
+      margin-top: 1.25em;
+    }
+
+    .qe {
+      line-height: 30px;
+    }
+
+    .qf {
+      letter-spacing: -0.016em;
+    }
+
+    .qs {
+      margin-top: 1.72em;
+    }
+
+    .qt {
+      line-height: 24px;
+    }
+
+    .qu {
+      letter-spacing: 0;
+    }
+
+    .ra {
+      margin-top: 0.94em;
+    }
+
+    .rf {
+      margin-top: 1.95em;
+    }
+
+    .rq {
+      margin-top: 1.14em;
+    }
+
+    .sp {
+      margin-top: 32px;
+    }
+
+    .ui {
+      margin-bottom: 88px;
+    }
+
+    .ut {
+      display: inline-block;
+    }
+
+    .uy {
+      padding-top: 72px;
+    }
+
+    .we {
+      margin-top: 40px;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="all and (max-width: 1079.98px)">
+    .e {
+      display: none;
+    }
+
+    .me {
+      margin-top: 0px;
+    }
+
+    .oe {
+      margin-left: auto;
+    }
+
+    .of {
+      text-align: center;
+    }
+
+    .us {
+      display: inline-block;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="all and (max-width: 903.98px)">
+    .f {
+      display: none;
+    }
+
+    .md {
+      margin-top: 0px;
+    }
+
+    .ur {
+      display: inline-block;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="all and (max-width: 727.98px)">
+    .g {
+      display: none;
+    }
+
+    .mb {
+      margin-top: 0px;
+    }
+
+    .mc {
+      margin-right: 0px;
+    }
+
+    .su {
+      padding: 10px 12px 10px;
+    }
+
+    .uq {
+      display: inline-block;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="all and (max-width: 551.98px)">
+    .h {
+      display: none;
+    }
+
+    .s {
+      display: flex;
+    }
+
+    .t {
+      justify-content: space-between;
+    }
+
+    .br {
+      width: 24px;
+    }
+
+    .cb {
+      margin: 0 24px;
+    }
+
+    .cq {
+      height: 40px;
+    }
+
+    .cx {
+      margin-bottom: 44px;
+    }
+
+    .dj {
+      margin-bottom: 32px;
+    }
+
+    .dw {
+      font-size: 13px;
+    }
+
+    .dx {
+      line-height: 20px;
+    }
+
+    .eg {
+      padding: 0px 8px 1px;
+    }
+
+    .fu {
+      margin-bottom: 4px;
+    }
+
+    .gw {
+      font-size: 32px;
+    }
+
+    .gx {
+      margin-top: 1.01em;
+    }
+
+    .gy {
+      line-height: 38px;
+    }
+
+    .gz {
+      letter-spacing: -0.014em;
+    }
+
+    .hs {
+      font-size: 18px;
+    }
+
+    .ht {
+      margin-top: 0.79em;
+    }
+
+    .hu {
+      line-height: 24px;
+    }
+
+    .im {
+      align-items: flex-start;
+    }
+
+    .jp {
+      flex-direction: column;
+    }
+
+    .js {
+      margin-bottom: 2px;
+    }
+
+    .kg {
+      margin: 24px -24px 0;
+    }
+
+    .kh {
+      padding: 0;
+    }
+
+    .kw>* {
+      margin-right: 8px;
+    }
+
+    .kx> :last-child {
+      margin-right: 24px;
+    }
+
+    .lo {
+      margin-left: 0px;
+    }
+
+    .lz {
+      margin-top: 0px;
+    }
+
+    .ma {
+      margin-right: 0px;
+    }
+
+    .mq {
+      margin: 0;
+    }
+
+    .na {
+      border: 1px solid #f2f2f2;
+    }
+
+    .nb {
+      border-radius: 99em;
+    }
+
+    .nc {
+      padding: 0px 16px 0px 12px;
+    }
+
+    .nd {
+      height: 38px;
+    }
+
+    .ne {
+      align-items: center;
+    }
+
+    .ng svg {
+      margin-right: 8px;
+    }
+
+    .nr {
+      margin-top: 40px;
+    }
+
+    .oj {
+      margin-top: 1.56em;
+    }
+
+    .ok {
+      line-height: 28px;
+    }
+
+    .ol {
+      letter-spacing: -0.003em;
+    }
+
+    .po {
+      font-size: 20px;
+    }
+
+    .pp {
+      margin-top: 0.93em;
+    }
+
+    .pq {
+      letter-spacing: 0;
+    }
+
+    .qi {
+      font-size: 16px;
+    }
+
+    .qj {
+      margin-top: 1.23em;
+    }
+
+    .qw {
+      margin-top: 0.67em;
+    }
+
+    .rb {
+      margin-top: 1.2em;
+    }
+
+    .rm {
+      margin-top: 1.34em;
+    }
+
+    .sl {
+      margin-top: 24px;
+    }
+
+    .ue {
+      margin-bottom: 80px;
+    }
+
+    .up {
+      display: inline-block;
+    }
+
+    .uu {
+      padding-top: 48px;
+    }
+
+    .wa {
+      margin-top: 32px;
+    }
+
+    .nf:hover {
+      border-color: #e5e5e5;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE"
+    media="all and (min-width: 904px) and (max-width: 1079.98px)">
+    .i {
+      display: none;
+    }
+
+    .bu {
+      width: 64px;
+    }
+
+    .ce {
+      margin: 0 64px;
+    }
+
+    .ct {
+      height: 48px;
+    }
+
+    .da {
+      margin-bottom: 52px;
+    }
+
+    .dm {
+      margin-bottom: 48px;
+    }
+
+    .ec {
+      font-size: 14px;
+    }
+
+    .ed {
+      line-height: 20px;
+    }
+
+    .ej {
+      font-size: 13px;
+    }
+
+    .ek {
+      padding: 5px 12px;
+    }
+
+    .ff {
+      display: flex;
+    }
+
+    .fx {
+      margin-bottom: 68px;
+    }
+
+    .gb {
+      max-width: 680px;
+    }
+
+    .hi {
+      font-size: 42px;
+    }
+
+    .hj {
+      margin-top: 1.19em;
+    }
+
+    .hk {
+      line-height: 52px;
+    }
+
+    .hl {
+      letter-spacing: -0.011em;
+    }
+
+    .ib {
+      font-size: 22px;
+    }
+
+    .ic {
+      margin-top: 0.92em;
+    }
+
+    .id {
+      line-height: 28px;
+    }
+
+    .ip {
+      align-items: center;
+    }
+
+    .ko {
+      border-top: solid 1px #f2f2f2;
+    }
+
+    .kp {
+      border-bottom: solid 1px #f2f2f2;
+    }
+
+    .kq {
+      margin: 32px 0 0;
+    }
+
+    .kr {
+      padding: 3px 8px;
+    }
+
+    .lc>* {
+      margin-right: 24px;
+    }
+
+    .ld> :last-child {
+      margin-right: 0;
+    }
+
+    .mt {
+      margin: 0;
+    }
+
+    .nu {
+      margin-top: 56px;
+    }
+
+    .ot {
+      font-size: 20px;
+    }
+
+    .ou {
+      margin-top: 2.14em;
+    }
+
+    .ov {
+      line-height: 32px;
+    }
+
+    .ow {
+      letter-spacing: -0.003em;
+    }
+
+    .py {
+      font-size: 24px;
+    }
+
+    .pz {
+      margin-top: 1.25em;
+    }
+
+    .qa {
+      line-height: 30px;
+    }
+
+    .qb {
+      letter-spacing: -0.016em;
+    }
+
+    .qp {
+      margin-top: 1.72em;
+    }
+
+    .qq {
+      line-height: 24px;
+    }
+
+    .qr {
+      letter-spacing: 0;
+    }
+
+    .qz {
+      margin-top: 0.94em;
+    }
+
+    .re {
+      margin-top: 1.95em;
+    }
+
+    .rp {
+      margin-top: 1.14em;
+    }
+
+    .so {
+      margin-top: 32px;
+    }
+
+    .uh {
+      margin-bottom: 88px;
+    }
+
+    .ux {
+      padding-top: 72px;
+    }
+
+    .wd {
+      margin-top: 40px;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE"
+    media="all and (min-width: 728px) and (max-width: 903.98px)">
+    .j {
+      display: none;
+    }
+
+    .w {
+      display: flex;
+    }
+
+    .x {
+      justify-content: space-between;
+    }
+
+    .bt {
+      width: 64px;
+    }
+
+    .cd {
+      margin: 0 48px;
+    }
+
+    .cs {
+      height: 48px;
+    }
+
+    .cz {
+      margin-bottom: 52px;
+    }
+
+    .dl {
+      margin-bottom: 48px;
+    }
+
+    .ea {
+      font-size: 13px;
+    }
+
+    .eb {
+      line-height: 20px;
+    }
+
+    .ei {
+      padding: 0px 8px 1px;
+    }
+
+    .fw {
+      margin-bottom: 68px;
+    }
+
+    .ga {
+      max-width: 680px;
+    }
+
+    .he {
+      font-size: 42px;
+    }
+
+    .hf {
+      margin-top: 1.19em;
+    }
+
+    .hg {
+      line-height: 52px;
+    }
+
+    .hh {
+      letter-spacing: -0.011em;
+    }
+
+    .hy {
+      font-size: 22px;
+    }
+
+    .hz {
+      margin-top: 0.92em;
+    }
+
+    .ia {
+      line-height: 28px;
+    }
+
+    .io {
+      align-items: center;
+    }
+
+    .kk {
+      border-top: solid 1px #f2f2f2;
+    }
+
+    .kl {
+      border-bottom: solid 1px #f2f2f2;
+    }
+
+    .km {
+      margin: 32px 0 0;
+    }
+
+    .kn {
+      padding: 3px 8px;
+    }
+
+    .la>* {
+      margin-right: 24px;
+    }
+
+    .lb> :last-child {
+      margin-right: 0;
+    }
+
+    .ms {
+      margin: 0;
+    }
+
+    .nt {
+      margin-top: 56px;
+    }
+
+    .op {
+      font-size: 20px;
+    }
+
+    .oq {
+      margin-top: 2.14em;
+    }
+
+    .or {
+      line-height: 32px;
+    }
+
+    .os {
+      letter-spacing: -0.003em;
+    }
+
+    .pu {
+      font-size: 24px;
+    }
+
+    .pv {
+      margin-top: 1.25em;
+    }
+
+    .pw {
+      line-height: 30px;
+    }
+
+    .px {
+      letter-spacing: -0.016em;
+    }
+
+    .qm {
+      margin-top: 1.72em;
+    }
+
+    .qn {
+      line-height: 24px;
+    }
+
+    .qo {
+      letter-spacing: 0;
+    }
+
+    .qy {
+      margin-top: 0.94em;
+    }
+
+    .rd {
+      margin-top: 1.95em;
+    }
+
+    .ro {
+      margin-top: 1.14em;
+    }
+
+    .sn {
+      margin-top: 32px;
+    }
+
+    .ug {
+      margin-bottom: 88px;
+    }
+
+    .uw {
+      padding-top: 72px;
+    }
+
+    .wc {
+      margin-top: 40px;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE"
+    media="all and (min-width: 552px) and (max-width: 727.98px)">
+    .k {
+      display: none;
+    }
+
+    .u {
+      display: flex;
+    }
+
+    .v {
+      justify-content: space-between;
+    }
+
+    .bs {
+      width: 24px;
+    }
+
+    .cc {
+      margin: 0 24px;
+    }
+
+    .cr {
+      height: 40px;
+    }
+
+    .cy {
+      margin-bottom: 44px;
+    }
+
+    .dk {
+      margin-bottom: 32px;
+    }
+
+    .dy {
+      font-size: 13px;
+    }
+
+    .dz {
+      line-height: 20px;
+    }
+
+    .eh {
+      padding: 0px 8px 1px;
+    }
+
+    .fv {
+      margin-bottom: 4px;
+    }
+
+    .ha {
+      font-size: 32px;
+    }
+
+    .hb {
+      margin-top: 1.01em;
+    }
+
+    .hc {
+      line-height: 38px;
+    }
+
+    .hd {
+      letter-spacing: -0.014em;
+    }
+
+    .hv {
+      font-size: 18px;
+    }
+
+    .hw {
+      margin-top: 0.79em;
+    }
+
+    .hx {
+      line-height: 24px;
+    }
+
+    .in {
+      align-items: flex-start;
+    }
+
+    .jq {
+      flex-direction: column;
+    }
+
+    .jt {
+      margin-bottom: 2px;
+    }
+
+    .ki {
+      margin: 24px 0 0;
+    }
+
+    .kj {
+      padding: 0;
+    }
+
+    .ky>* {
+      margin-right: 8px;
+    }
+
+    .kz> :last-child {
+      margin-right: 8px;
+    }
+
+    .lp {
+      margin-left: 0px;
+    }
+
+    .mr {
+      margin: 0;
+    }
+
+    .nh {
+      border: 1px solid #f2f2f2;
+    }
+
+    .ni {
+      border-radius: 99em;
+    }
+
+    .nj {
+      padding: 0px 16px 0px 12px;
+    }
+
+    .nk {
+      height: 38px;
+    }
+
+    .nl {
+      align-items: center;
+    }
+
+    .nn svg {
+      margin-right: 8px;
+    }
+
+    .ns {
+      margin-top: 40px;
+    }
+
+    .om {
+      margin-top: 1.56em;
+    }
+
+    .on {
+      line-height: 28px;
+    }
+
+    .oo {
+      letter-spacing: -0.003em;
+    }
+
+    .pr {
+      font-size: 20px;
+    }
+
+    .ps {
+      margin-top: 0.93em;
+    }
+
+    .pt {
+      letter-spacing: 0;
+    }
+
+    .qk {
+      font-size: 16px;
+    }
+
+    .ql {
+      margin-top: 1.23em;
+    }
+
+    .qx {
+      margin-top: 0.67em;
+    }
+
+    .rc {
+      margin-top: 1.2em;
+    }
+
+    .rn {
+      margin-top: 1.34em;
+    }
+
+    .sm {
+      margin-top: 24px;
+    }
+
+    .uf {
+      margin-bottom: 80px;
+    }
+
+    .uv {
+      padding-top: 48px;
+    }
+
+    .wb {
+      margin-top: 32px;
+    }
+
+    .nm:hover {
+      border-color: #e5e5e5;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE" media="print">
+    .un {
+      display: none;
+    }
+  </style>
+  <style type="text/css" data-fela-rehydration="606" data-fela-type="RULE"
+    media="(orientation: landscape) and (max-width: 903.98px)">
+    .kd {
+      max-height: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="a b c">
+      <div class="d e f g h i j k"></div>
+      <div class="l c">
+        <div class="ft">
+          <a rel="me" href="https://me.dm/@cristianleo">Mastodon</a>
+        </div>
+        <div class="l">
+          <div class="fu fv fw fx fy l">
+            <div class="ab ca">
+              <div class="ch bg fz ga gb gc"></div>
+            </div>
+            <article>
+              <div class="l">
+                <div class="l">
+                  <span class="l"></span>
+                  <section>
+                    <div>
+                      <div class="fr gi gj gk gl gm"></div>
+                      <div class="gn go gp gq gr">
+                        <div class="ab ca">
+                          <div class="ch bg fz ga gb gc">
+                            <div>
+                              <h1 id="28e6"
+                                class="pw-post-title gs gt gu be gv gw gx gy gz ha hb hc hd he hf hg hh hi hj hk hl hm hn ho hp hq bj"
+                                data-testid="storyTitle">
+                                Javascript Review
+                              </h1>
+                            </div>
+                            <div>
+                              <div class="ih ii ij ik il">
+                                <div class="speechify-ignore ab co">
+                                  <div class="speechify-ignore bg l"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <figure class="nr ns nt nu nv nw no np paragraph-image">
+                              <div role="button" tabindex="0" class="nx ny fi nz bg oa">
+                                <div class="no np nq">
+                                  <img alt="" src="https://th.bing.com/th/id/OIG2.b_SX4Q671Zm8hRPC9SRp?pid=ImgGn"
+                                    class="bg mv ob c" width="700" height="400" loading="eager" role="presentation" />
+                                </div>
+                              </div>
+                              <figcaption class="oc fe od no np oe of be b bf z dt">
+                                Image by DALL-E
+                              </figcaption>
+                            </figure>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ab ca pc pd pe pf" role="separator">
+                        <span class="pg bx bl ph pi pj"></span>
+                        <span class="pg bx bl ph pi pj"></span>
+                        <span class="pg bx bl ph pi"></span>
+                      </div>
+                      <div class="gn go gp gq gr">
+                        <div class="ab ca">
+                          <div class="ch bg fz ga gb gc">
+                            <p id="dea9"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">Index</strong>
+                              <br />
+                              <strong class="oi gv">· </strong>
+                              <a class="af pk" href="#2200" rel="noopener ugc nofollow">
+                                <strong class="oi gv">1: Understanding JavaScript Basics</strong>
+                              </a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#2077" rel="noopener ugc nofollow">1.1: What is JavaScript?</a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#f8c6" rel="noopener ugc nofollow">1.2: JavaScript Syntax</a>
+                            </p>
+                            <p id="215a"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">· </strong>
+                              <a class="af pk" href="#1208" rel="noopener ugc nofollow">
+                                <strong class="oi gv">2: JavaScript Variables</strong>
+                              </a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#b18e" rel="noopener ugc nofollow">2.1: The
+                                <code class="code">var</code> Keyword</a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#ab12" rel="noopener ugc nofollow">2.2: The
+                                <code class="code">let</code> Keyword</a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#69b9" rel="noopener ugc nofollow">2.3: The
+                                <code class="code">const</code> Keyword</a>
+                            </p>
+                            <p id="5dd2"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">· </strong>
+                              <a class="af pk" href="#3bb7" rel="noopener ugc nofollow">
+                                <strong class="oi gv">3: Working with JavaScript
+                                  Variables</strong>
+                              </a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#665d" rel="noopener ugc nofollow">3.1: Variable Scope</a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#e015" rel="noopener ugc nofollow">3.2: Variable Hoisting</a>
+                              <br />
+                              ∘
+                              <a class="af pk" href="#03fd" rel="noopener ugc nofollow">3.3: Variable Types and Type
+                                Conversion</a>
+                              <br />
+                            </p>
+                            <p id="503a"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">· </strong>
+                              <a class="af pk" href="#f035" rel="noopener ugc nofollow">
+                                <strong class="oi gv">4: Conclusion</strong>
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ab ca pc pd pe pf" role="separator">
+                        <span class="pg bx bl ph pi pj"></span>
+                        <span class="pg bx bl ph pi pj"></span>
+                        <span class="pg bx bl ph pi"></span>
+                      </div>
+                      <div class="gn go gp gq gr">
+                        <div class="ab ca">
+                          <div class="ch bg fz ga gb gc">
+                            <h1 id="2200"
+                              class="pl pm gu be pn po pp hu pq pr ps hx pt pu pv pw px py pz qa qb qc qd qe qf qg bj">
+                              1: Understanding JavaScript Basics
+                            </h1>
+                            <h2 id="2077"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              1.1: What is JavaScript?
+                            </h2>
+                            <p id="cd6a"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              JavaScript is a powerful and flexible
+                              programming language that runs everywhere from
+                              servers to mobile devices, but it’s most
+                              commonly used to add interactivity and dynamism
+                              to web pages. It’s one of the three core
+                              technologies of the World Wide Web, alongside
+                              HTML and CSS.
+                            </p>
+                            <p id="ee3e"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">The Evolution of JavaScript</strong>
+                            </p>
+                            <figure class="nr ns nt nu nv nw no np paragraph-image">
+                              <div role="button" tabindex="0" class="nx ny fi nz bg oa">
+                                <div class="no np nq">
+                                  <picture>
+                                    <source srcset="
+                                          https://miro.medium.com/v2/resize:fit:640/format:webp/0*RmTRa3vrNVFBZypb   640w,
+                                          https://miro.medium.com/v2/resize:fit:720/format:webp/0*RmTRa3vrNVFBZypb   720w,
+                                          https://miro.medium.com/v2/resize:fit:750/format:webp/0*RmTRa3vrNVFBZypb   750w,
+                                          https://miro.medium.com/v2/resize:fit:786/format:webp/0*RmTRa3vrNVFBZypb   786w,
+                                          https://miro.medium.com/v2/resize:fit:828/format:webp/0*RmTRa3vrNVFBZypb   828w,
+                                          https://miro.medium.com/v2/resize:fit:1100/format:webp/0*RmTRa3vrNVFBZypb 1100w,
+                                          https://miro.medium.com/v2/resize:fit:1400/format:webp/0*RmTRa3vrNVFBZypb 1400w
+                                        "
+                                      sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px"
+                                      type="image/webp" />
+                                    <source data-testid="og" srcset="
+                                          https://miro.medium.com/v2/resize:fit:640/0*RmTRa3vrNVFBZypb   640w,
+                                          https://miro.medium.com/v2/resize:fit:720/0*RmTRa3vrNVFBZypb   720w,
+                                          https://miro.medium.com/v2/resize:fit:750/0*RmTRa3vrNVFBZypb   750w,
+                                          https://miro.medium.com/v2/resize:fit:786/0*RmTRa3vrNVFBZypb   786w,
+                                          https://miro.medium.com/v2/resize:fit:828/0*RmTRa3vrNVFBZypb   828w,
+                                          https://miro.medium.com/v2/resize:fit:1100/0*RmTRa3vrNVFBZypb 1100w,
+                                          https://miro.medium.com/v2/resize:fit:1400/0*RmTRa3vrNVFBZypb 1400w
+                                        "
+                                      sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px" />
+                                    <img alt="" class="bg mv ob c" width="700" height="400" loading="lazy"
+                                      role="presentation" />
+                                  </picture>
+                                </div>
+                              </div>
+                              <figcaption class="oc fe od no np oe of be b bf z dt">
+                                Image by DALL-E
+                              </figcaption>
+                            </figure>
+                            <p id="716f"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              JavaScript was first introduced in 1995 by
+                              Netscape Communications to add interactivity to
+                              their browser, Netscape Navigator. It has since
+                              evolved into a versatile language with a wide
+                              range of uses, thanks to improvements in browser
+                              technology and the introduction of frameworks
+                              and libraries that extend its capabilities.
+                            </p>
+                            <p id="ae1c"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">
+                                From Scripting to Full-Fledged Programming<br />
+                              </strong>
+                              Originally, JavaScript was primarily used for
+                              simple tasks like form validation and creating
+                              basic interactive effects such as image
+                              rollovers. However, with the advent of AJAX
+                              (Asynchronous JavaScript and XML) in the early
+                              2000s, developers began to use JavaScript to
+                              make more sophisticated, dynamic web
+                              applications.
+                            </p>
+                            <p id="e14e"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              Then came the rise of JavaScript frameworks and
+                              libraries, such as jQuery, AngularJS, React, and
+                              Vue.js, which have made it easier to build
+                              complex applications with JavaScript. These
+                              tools provide pre-written JavaScript code to
+                              help with common tasks and patterns in web
+                              development.
+                            </p>
+                            <p id="09ed"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">
+                                Understanding Through Code<br />
+                              </strong>
+                              One of the key strengths of JavaScript is its
+                              flexibility. It’s a multi-paradigm language,
+                              supporting procedural, object-oriented, and
+                              functional programming styles. This makes it a
+                              great choice for a wide variety of projects.
+                            </p>
+                            <p id="a024"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              Thanks to its ubiquity and versatility,
+                              JavaScript is now used for much more than just
+                              web development. It’s used for server-side
+                              programming with Node.js, for mobile app
+                              development with frameworks like React Native
+                              and Ionic, and even for game and IoT
+                              development.
+                            </p>
+                            <h2 id="f8c6"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              1.2: JavaScript Syntax
+                            </h2>
+                            <p id="54dc"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              JavaScript is a dynamic and interpreted
+                              programming language that’s primarily used for
+                              building web-based applications. It’s one of the
+                              core technologies of the World Wide Web,
+                              alongside HTML and CSS.
+                            </p>
+                            <p id="933e"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              In JavaScript, you can declare variables using
+                              var, let, or const, each with its own scope and
+                              use cases. The language also supports various
+                              data types, including Number, String, Boolean,
+                              Null, Undefined, Object, and Symbol.
+                            </p>
+                            <p id="b6ab"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              JavaScript uses a syntax similar to other
+                              C-based languages, with code organized in
+                              statements and blocks. It supports control flow
+                              statements like if, for, while, and switch, and
+                              also includes error handling capabilities with
+                              try, catch, and finally.
+                            </p>
+                            <p id="82ca"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              Functions in JavaScript can be defined using the
+                              function keyword, and more recently, the arrow
+                              function syntax. JavaScript also supports
+                              object-oriented programming with constructor
+                              functions and classes, and functional
+                              programming with first-class functions and
+                              higher-order functions.
+                            </p>
+                            <h1 id="1208"
+                              class="pl pm gu be pn po rb hu pq pr rc hx pt pu rd pw px py re qa qb qc rf qe qf qg bj">
+                              2: JavaScript Variables
+                            </h1>
+                            <p id="4fc7"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              At the core of neural networks are what we call
+                              neurons or nodes, inspired by the nerve cells in
+                              our brains. These artificial neurons are the
+                              workhorses that handle the heavy lifting of
+                              receiving, crunching, and passing along
+                              information. Let’s dive into how these neurons
+                              are built.
+                            </p>
+                            <h2 id="b18e"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              <strong class="al">2.1: The
+                                <code class="code">var</code> Keyword</strong>
+                            </h2>
+                            <p id="cbcf"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              The var keyword is used to declare a variable
+                              that can hold any type of data, from numbers and
+                              strings to more complex objects. Variables
+                              declared with var are function-scoped, meaning
+                              they are accessible within the function they are
+                              defined in, or globally if declared outside of a
+                              function. Here some examples of its use:
+                            </p>
+                            <pre><code class="language-javascript">
+                            var name = 'Daniel'; // A string variable
+                            var age = 5; // A numerical variable
+                            var isAI = true; // A boolean variable
+                                </code></pre>
+                            <h2 id="ab12"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              <strong class="al">2.2: The
+                                <code class="code">let</code> Keyword</strong>
+                            </h2>
+                            <p id="5c73"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              let is a keyword introduced in ES6 that is used
+                              to declare block-scoped variables. Unlike
+                              variables declared with var, which are
+                              function-scoped, let variables are limited to
+                              the block, statement, or expression they are
+                              declared in. This is particularly useful in
+                              modern JavaScript development where block
+                              scoping can help prevent errors related to
+                              variable hoisting and scope leakage.
+                            </p>
+                            <pre><code class="language-javascript">
+                            let y = 31;
+                            if (true) {
+                              let y = 71;  // Different variable
+                              console.log(y);  // 71
+                            }
+                            console.log(y); // 31
+                              </code></pre>
+                            <p id="e795"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                            </p>
+                            <h2 id="69b9"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              <strong class="al">2.3: The
+                                <code class="code">const</code>
+                                Keyword</strong>
+                            </h2>
+                            <p id="a2c2"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              const keyword is used to declare a variable that is not intended to be reassigned.
+                              Variables declared with const are block-scoped, similar to those declared with let.
+                              However, the key difference is that const variables must be initialized at the time of
+                              declaration, and their values cannot be changed through reassignment.
+                            </p>
+                            <pre><code class="javascript-language">
+                        const z = 1;
+                        if (true) {
+                          const z = 2;  // Different variable
+                          console.log(z);  // 2
+                        }
+                        // z = 3;  // Error: Assignment to constant variable.
+                        console.log(z);  // 1
+                            </code></pre>
+                            <h1 id="3bb7"
+                              class="pl pm gu be pn po rb hu pq pr rc hx pt pu rd pw px py re qa qb qc rf qe qf qg bj">
+                              3: Working with JavaScript Variables
+                            </h1>
+                            <h2 id="665d"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              3.1: Variable Scope
+                            </h2>
+                            <p id="9d7a"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              In JavaScript, variable scope refers to the context within which a variable is accessible.
+                              Variables declared with var have function scope, meaning they are accessible within the
+                              function they are defined in, or globally if not within a function. ES6 introduced let and
+                              const, which have block scope and are only accessible within the closest enclosing block
+                              (e.g., if, for loops).
+                            </p>
+                            <pre><code class="javascript-language">
+          function variableScope() {
+            var functionScoped = 'Accessible within this function';
+            if (true) {
+                let blockScoped = 'Accessible within this block';
+                console.log(blockScoped); // Works fine
+            }
+            console.log(functionScoped); // Works fine
+            console.log(blockScoped); // ReferenceError: blockScoped is not defined
+          }
+                            </code></pre>
+                            <h2 id="e015"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              3.2: Variable Hoisting
+                            </h2>
+                            <p id="0960"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              Hoisting in JavaScript is a behavior where variable and function declarations are moved to
+                              the top of their containing scope during the compilation phase. This means that variables
+                              can be used before they are declared. However, only the declarations are hoisted, not the
+                              initializations.
+                            </p>
+                            <pre><code class="javascript-language">
+                        console.log(hoistedVar); // undefined
+                        var hoistedVar = 'This variable is hoisted';
+                        
+                        function hoistedFunction() {
+                            console.log('This function is hoisted');
+                        }
+                        hoistedFunction(); // This function is hoisted
+                                </code></pre>
+                            <h2 id="03fd"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              3.3: Variable Types and Type Conversion
+                            </h2>
+                            <p id="ed04"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              JavaScript is a dynamically typed language, which means variables are not bound to a
+                              specific data type. However, it supports primitive data types like Number, String,
+                              Boolean, and complex types like Object. Type conversion can be explicit or implicit, known
+                              as type coercion.
+                            </p>
+                            <pre><code class="javascript-language">
+       let num = '5';
+       let convertedNum = Number(num); // Explicit conversion from string to number
+       console.log(typeof convertedNum); // 'number'
+       
+       let result = '5' + 3; // Implicit conversion, '5' becomes '53' (string)
+       console.log(result); // '53'
+                            </code></pre>
+                            <h1 id="f035"
+                              class="pl pm gu be pn po rb hu pq pr rc hx pt pu rd pw px py re qa qb qc rf qe qf qg bj">
+                              6: Conclusion
+                            </h1>
+                            <p id="cf73"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              Diving into the world of neural networks opens
+                              our eyes to the incredible potential these
+                              models hold within the realm of artificial
+                              intelligence. Starting with the basics, like how
+                              neural networks use weighted sums and activation
+                              functions to process information, we’ve seen how
+                              techniques like backpropagation and gradient
+                              descent empower them to learn from data.
+                              Especially in areas like image recognition,
+                              we’ve witnessed firsthand how neural networks
+                              are solving complex challenges and pushing
+                              technology forward.
+                            </p>
+                            <p id="1781"
+                              class="pw-post-body-paragraph og oh gu oi b<h2 id="e495"
+                              class="qh pm gu be pn qi qj dx pq qk ql dz pt op qm qn qo ot qp qq qr ox qs qt qu qv bj">
+                              3.4: Best Practices
+                            </h2>
+                            <p id="4a87"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              While the basic idea of Gradient Descent is
+                              simple — take small steps in the direction that
+                              reduces error the most — several tweaks and
+                              improvements have been made to this method to
+                              enhance its efficiency and effectiveness.
+                            </p>
+                            <p id="fda7"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">Stochastic Gradient Descent (SGD)</strong>
+                              <br />Stochastic Gradient Descent (SGD) takes
+                              the core idea of gradient descent but changes
+                              the approach by using just one training example
+                              at a time to calculate the gradient and update
+                              the weights. This method is similar to making
+                              decisions based on quick, individual
+                              observations rather than waiting to gather
+                              everyone’s opinion. It can make the learning
+                              process much faster because the model updates
+                              more frequently and with less computational
+                              burden.
+                            </p>
+                            <p id="97c4"
+                              class="pw-post-body-paragraph og oh gu oi b hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              <strong class="oi gv">Adam (Adaptive Moment Estimation)</strong>
+                              <br />Adam, short for Adaptive Moment
+                              Estimation, is like the wise advisor to SGD’s
+                              youthful energy. It takes the concept of
+                              adjusting weights based on the data’s gradient
+                              but does so with a more sophisticated,
+                              personalized approach for each parameter in the
+                              model. Adam combines ideas from two other
+                              gradient descent improvements, AdaGrad and
+                              RMSProp, to adapt the learning rate for each
+                              weight in the network based on the first (mean)
+                              and second (uncentered variance) moments of the
+                              gradients.
+                            </p>
+                            <h1 id="f035"
+                              class="pl pm gu be pn po rb hu pq pr rc hx pt pu rd pw px py re qa qb qc rf qe qf qg bj">
+                              6: Conclusion
+                            </h1>
+                            <p id="cf73"
+                              class="pw-post-body-paragraph og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb gn bj">
+                              Diving into the world of neural networks opens
+                              our eyes to the incredible potential these
+                              models hold within the realm of artificial
+                              intelligence. Starting with the basics, like how
+                              neural networks use weighted sums and activation
+                              functions to process information, we’ve seen how
+                              techniques like backpropagation and gradient
+                              descent empower them to learn from data.
+                              Especially in areas like image recognition, hs oj ok ol hv om on oo op oq or os ot ou ov ow ox oy oz pa pb gn bj">
+                              Looking ahead, it’s clear we are only at the
+                              beginning of a long journey called “Deep
+                              Learning”. In the next articles, we will talk
+                              about more advanced deep learning architectures,
+                              fine-tuning methods, and much more!
+                            </p>
+                            <h1 id="62f9"
+                              class="pl pm gu be pn po rb hu pq pr rc hx pt pu rd pw px py re qa qb qc rf qe qf qg bj">
+                              Bibliography
+                            </h1>
+                            <ol class="">
+                              <li id="aa1d"
+                                class="og oh gu oi b hs qw ok ol hv qx on oo op qy or os ot qz ov ow ox ra oz pa pb tt rj rk bj">
+                                Goodfellow, Ian, Yoshua Bengio, and Aaron
+                                Courville. “Deep Learning.” MIT Press, 2016.
+                                This comprehensive textbook provides an
+                                extensive overview of deep learning, covering
+                                the mathematical underpinnings and practical
+                                aspects of neural networks.
+                              </li>
+                              <li id="56b9"
+                                class="og oh gu oi b hs rm ok ol hv rn on oo op ro or os ot rp ov ow ox rq oz pa pb tt rj rk bj">
+                                LeCun, Yann, Yoshua Bengio, and Geoffrey
+                                Hinton. “Deep learning.” Nature 521, no. 7553
+                                (2015): 436–444. A landmark paper by pioneers
+                                in the field, summarizing the key concepts and
+                                achievements in deep learning and neural
+                                networks.
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </article>
+            <div class="ab ca">
+              <div class="ch bg fz ga gb gc"></div>
+            </div>
+          </div>
+          <div class="ab ca">
+            <div class="ch bg fz ga gb gc">
+              <div class="tv tw ab jr">
+                <div class="sx ab">
+                  <a class="tx ax am ao"
+                    href="https://medium.com/tag/deep-learning?source=post_page-----a34a51b93873---------------deep_learning-----------------"
+                    rel="noopener follow">
+                    <div class="ty fi cw tz ge ua ub be b bf z bj uc">
+                      Deep Learning
+                    </div>
+                  </a>
+                </div>
+                <div class="sx ab">
+                  <a class="tx ax am ao"
+                    href="https://medium.com/tag/data-science?source=post_page-----a34a51b93873---------------data_science-----------------"
+                    rel="noopener follow">
+                    <div class="ty fi cw tz ge ua ub be b bf z bj uc">
+                      Data Science
+                    </div>
+                  </a>
+                </div>
+                <div class="sx ab">
+                  <a class="tx ax am ao"
+                    href="https://medium.com/tag/machine-learning?source=post_page-----a34a51b93873---------------machine_learning-----------------"
+                    rel="noopener follow">
+                    <div class="ty fi cw tz ge ua ub be b bf z bj uc">
+                      Machine Learning
+                    </div>
+                  </a>
+                </div>
+                <div class="sx ab">
+                  <a class="tx ax am ao"
+                    href="https://medium.com/tag/mathematics?source=post_page-----a34a51b93873---------------mathematics-----------------"
+                    rel="noopener follow">
+                    <div class="ty fi cw tz ge ua ub be b bf z bj uc">
+                      Mathematics
+                    </div>
+                  </a>
+                </div>
+                <div class="sx ab">
+                  <a class="tx ax am ao"
+                    href="https://medium.com/tag/deep-dives?source=post_page-----a34a51b93873---------------deep_dives-----------------"
+                    rel="noopener follow">
+                    <div class="ty fi cw tz ge ua ub be b bf z bj uc">
+                      Deep Dives
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="l"></div>
+          <div class="uu uv uw ux uy l bw">
+            <div class="ab ca">
+              <div class="ch bg fz ga gb gc">
+                <div class="ck ab uz co">
+                  <div class="ab ir">
+                    <a href="https://medium.com/@cristianleo120?source=post_page-----a34a51b93873--------------------------------"
+                      rel="noopener follow">
+                      <div class="l va vb bx vc iv">
+                        <div class="l fi">
+                          <img alt="Daniel Barreras" class="l fc bx vd ve cw"
+                            src="https://media.licdn.com/dms/image/D4E03AQFtcNBtorPVvQ/profile-displayphoto-shrink_800_800/0/1693118277910?e=1717632000&v=beta&t=j-qfN18JJJGFSToUEH7u9n8RSNelK1z2BwRwQmXZfbQ"
+                            width="72" height="72" loading="lazy" />
+                          <div class="iw bx l vd ve fr n ix fs"></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://towardsdatascience.com/?source=post_page-----a34a51b93873--------------------------------"
+                      rel="noopener follow">
+                      <div class="vf ab fi">
+                        <div>
+                          <div class="bl" aria-hidden="false">
+                            <div class="l vg vh bx vc jb">
+                              <div class="l fi">
+                                <img alt="Towards Data Science" class="l fc bx by bz cw"
+                                  src="https://miro.medium.com/v2/resize:fill:64:64/1*CJe3891yB1A1mzMdqemkdg.jpeg"
+                                  width="32" height="32" loading="lazy" />
+                                <div class="iw bx l by bz fr n ix fs"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="j i d">
+                    <div class="ab">
+                      <span>
+                        <a class="be b bf z eo ty ep eq er es et eu ev ew ex ey ez vi fa fb fc bl fd fe"
+                          href="https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2Fc24a3d106811&amp;operation=register&amp;redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-math-behind-neural-networks-a34a51b93873&amp;user=Cristian+Leo&amp;userId=c24a3d106811&amp;source=post_page-c24a3d106811----a34a51b93873---------------------follow_profile-----------"
+                          rel="noopener follow">Follow</a>
+                      </span>
+                      <div class="ds l">
+                        <div>
+                          <div>
+                            <div class="bl" aria-hidden="false">
+                              <div class="l">
+                                <span>
+                                  <a class="af ag ah ai aj ak al am an ao ap aq ar as at"
+                                    href="https://medium.com/m/signin?actionUrl=%2F_%2Fapi%2Fsubscriptions%2Fnewsletters%2F5a6c71c2b112&amp;operation=register&amp;redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-math-behind-neural-networks-a34a51b93873&amp;newsletterV3=c24a3d106811&amp;newsletterV3Id=5a6c71c2b112&amp;user=Cristian+Leo&amp;userId=c24a3d106811&amp;source=-----a34a51b93873---------------------subscribe_user-----------"
+                                    rel="noopener follow">
+                                    <button
+                                      class="be b bf z vk am vl vm vn vo vp vq vr vs ev ew ex ey ez fa fb fc bl fd fe"
+                                      aria-label="Subscribe">
+                                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" class="vj vh vg">
+                                        <rect x="26.25" y="9.25" width="0.5" height="6.5" rx="0.25"></rect>
+                                        <rect x="29.75" y="12.25" width="0.5" height="6.5" rx="0.25"
+                                          transform="rotate(90 29.75 12.25)"></rect>
+                                        <path d="M19.5 12.5h-7a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-5">
+                                        </path>
+                                        <path d="M11.5 14.5L19 20l4-3"></path>
+                                      </svg>
+                                    </button>
+                                  </a>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ab cm co">
+                  <div class="l">
+                    <div class="ab q">
+                      <a class="af ag ah ai aj ak al am an ao ap aq ar as at ab q"
+                        href="https://medium.com/@cristianleo120?source=post_page-----a34a51b93873--------------------------------"
+                        rel="noopener follow">
+                        <h2 class="pw-author-name be vt vu vv vw bj">
+                          <span class="gn">Written by
+                            <!-- -->
+                            Daniel Barreras</span>
+                        </h2>
+                      </a>
+                    </div>
+                    <div class="sx ab">
+                      <div class="l jo">
+                        <span class="pw-follower-count be b bf z bj">
+                          <a class="af ag ah ai aj ak al am an ao ap aq ar jh"
+                            href="https://medium.com/@cristianleo120/followers?source=post_page-----a34a51b93873--------------------------------"
+                            rel="noopener follow">Persona</a>
+                        </span>
+                      </div>
+                      <div class="be b bf z jw jx jy ab ka kb kc kd dt ju">
+                        <span class="ji l" aria-hidden="true">
+                          <span class="be b bf z dt">·</span>
+                        </span>
+                        <div>
+                          <div class="l" aria-hidden="false">
+                            <a class="af ag ah ai aj ak al am an ao ap aq ar jh ab q"
+                              href="https://towardsdatascience.com/?source=post_page-----a34a51b93873--------------------------------"
+                              rel="noopener follow">
+                              <p class="be b bf z jw jx jy jz ka kb kc kd bj">
+                                Towards Data Science
+                              </p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vx l">
+                      <p class="be b bf z bj">
+                        <span class="gn">Es un sujeto promedio</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="h k">
+                    <div class="ab">
+                      <span>
+                        <a class="be b bf z eo ty ep eq er es et eu ev ew ex ey ez vi fa fb fc bl fd fe"
+                          href="https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2Fc24a3d106811&amp;operation=register&amp;redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-math-behind-neural-networks-a34a51b93873&amp;user=Cristian+Leo&amp;userId=c24a3d106811&amp;source=post_page-c24a3d106811----a34a51b93873---------------------follow_profile-----------"
+                          rel="noopener follow">Follow</a>
+                      </span>
+                      <div class="ds l">
+                        <div>
+                          <div>
+                            <div class="bl" aria-hidden="false">
+                              <div class="l">
+                                <span>
+                                  <a class="af ag ah ai aj ak al am an ao ap aq ar as at"
+                                    href="https://medium.com/m/signin?actionUrl=%2F_%2Fapi%2Fsubscriptions%2Fnewsletters%2F5a6c71c2b112&amp;operation=register&amp;redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-math-behind-neural-networks-a34a51b93873&amp;newsletterV3=c24a3d106811&amp;newsletterV3Id=5a6c71c2b112&amp;user=Cristian+Leo&amp;userId=c24a3d106811&amp;source=-----a34a51b93873---------------------subscribe_user-----------"
+                                    rel="noopener follow">
+                                    <button
+                                      class="be b bf z vk am vl vm vn vo vp vq vr vs ev ew ex ey ez fa fb fc bl fd fe"
+                                      aria-label="Subscribe">
+                                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" class="vj vh vg">
+                                        <rect x="26.25" y="9.25" width="0.5" height="6.5" rx="0.25"></rect>
+                                        <rect x="29.75" y="12.25" width="0.5" height="6.5" rx="0.25"
+                                          transform="rotate(90 29.75 12.25)"></rect>
+                                        <path d="M19.5 12.5h-7a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-5">
+                                        </path>
+                                        <path d="M11.5 14.5L19 20l4-3"></path>
+                                      </svg>
+                                    </button>
+                                  </a>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="vy bg vz wa wb wc wd we"></div>
+              </div>
+            </div>
+            <div class="h k j">
+              <div class="vy bg vz wf"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  hljs.highlightAll();
+</script>
+
+</html>
