@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculeitor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Calculeitor</h1>
+
+  <div id="history"></div>
+
+  <div id="calculator" class="calculator">
+
+    <button class="clear" style="visibility: hidden;">C</button>
+    <div id="viewer" class="viewer">0</div>
+
+    <button id="clear" class="clear special-ops">C</button>
+    <button id="clearall" class="clear special-ops">CA</button>   
+    <button data-ops="power" class="ops">^</button>
+    <button data-ops="divided by" class="ops">/</button>
+
+    <button class="num" data-num="7">7</button>
+    <button class="num" data-num="8">8</button>
+    <button class="num" data-num="9">9</button>
+    <button data-ops="times" class="ops">*</button>
+    
+    <button class="num" data-num="4">4</button>
+    <button class="num" data-num="5">5</button>
+    <button class="num" data-num="6">6</button>
+    <button data-ops="minus" class="ops">-</button>
+    
+    <button class="num" data-num="1">1</button>
+    <button class="num" data-num="2">2</button>
+    <button class="num" data-num="3">3</button>
+    <button data-ops="plus" class="ops">+</button>
+    
+    <button class="num" data-num="0">0</button>
+    <button class="num" data-num=".">.</button>
+    <button id="equals" class="equals" data-result="">=</button>
+  </div>
+</body>
+<script src="main.js"></script>
+</html>
