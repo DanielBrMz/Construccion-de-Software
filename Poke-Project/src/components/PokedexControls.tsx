@@ -13,9 +13,9 @@ type PokedexControlsProps = {
 const PokedexControls = ({no, controls}: PokedexControlsProps) => {
   return (
     <div className="panel-row controls">
-      <Button dir="left" onClick={controls.prev} />
+      <Button onClick={controls.prev} />
       <NumInput no={no} func={controls.pick} />
-      <Button dir="right" onClick={controls.next} />
+      <Button onClick={controls.next} />
     </div>
   );
 }

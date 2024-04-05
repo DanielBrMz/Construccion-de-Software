@@ -1,8 +1,8 @@
-const PokemonName = (props: { name: string; no: number }) => {
+const PokemonName = ({name, no}: { name: string; no: number }) => {
   return (
     <div className="pokemon-name screen">
-      {props.name}
-      <span className="name-no">no. {props.no}</span>
+      {name}
+      <span className="name-no">no. {no}</span>
     </div>
   );
 };
