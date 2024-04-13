@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../index.css";
 import RightPanel from "./RightPanel";
 import LeftPanel from "./LeftPanel";
+import Divider from "./Divider";
 
 type MoveLearnMethod = {
   name: string;
@@ -185,19 +186,5 @@ const Pokedex = () => {
     </div>
   );
 };
-
-function Divider() {
-  return (
-    <div className="divider">
-      <div className="gap" />
-      <div className="hinge" />
-      <div className="gap" />
-      <div className="hinge" />
-      <div className="gap" />
-      <div className="hinge" />
-      <div className="gap" />
-    </div>
-  );
-}
 
 export default Pokedex;
