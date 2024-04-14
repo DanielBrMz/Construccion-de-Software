@@ -15,11 +15,39 @@
 
 .main-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   min-height: 100vh;
   min-width: 95vw;
   padding: 0 1rem;
+}
+
+.pokedex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.fight-button {
+  border: 1px solid #213547;
+  padding: 0.6em 1.2em;
+  font-size: 2em;
+  font-weight: 500;
+  background-color: #213547;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-radius: 2rem;
+}
+
+.fight-button:hover {
+  background-color: #646cff;
+}
+
+.fight-button:disabled {
+  background-color: #646cff;
+  cursor: not-allowed;
 }
 
 a {

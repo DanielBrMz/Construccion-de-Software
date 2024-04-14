@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../index.css";
+import "../../index.css";
 import RightPanel from "./RightPanel";
 import LeftPanel from "./LeftPanel";
 import Divider from "./Divider";
@@ -65,7 +65,7 @@ const pickRandom = (arr: number[]): number => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const Pokedex = () => {
+const Pokedex = ({index}:{index: number}) => {
   const [state, setState] = useState<PokedexState>({
     requestRoot: "https://pokeapi.co/api/v2/pokemon/",
     pokemonIndex: POKEMON,
@@ -169,6 +169,7 @@ const Pokedex = () => {
         pData={pData}
         no={state.pokemonIndex}
         description={state.description}
+        index={index}
       />
       <Divider />
       <RightPanel

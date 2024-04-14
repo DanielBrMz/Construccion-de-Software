@@ -1,4 +1,4 @@
-import { padStats } from "../utils/padStats";
+import { padStats } from "../../utils/padStats";
 
 const MovesLoading = () => {
   return (

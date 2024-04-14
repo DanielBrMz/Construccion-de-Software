@@ -124,6 +124,15 @@ body {
   min-height: 115px;
   box-sizing: border-box;
   flex: 1;
+  flex-grow: 5;
+}
+.fight-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
 }
 .pokemon-sprite {
   width: 100%;
@@ -529,12 +538,32 @@ body {
   background-color: #5ed75e;
   border-radius: 20px;
   box-sizing: border-box;
+  text-align: center;
   margin-top: 3px;
   cursor: pointer;
 }
 .submit:hover {
   border-color: #85ec4d;
 }
+
+.select {
+  display: flex;
+  width: 5rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  border: groove #5f845e 3px;
+  background-color: #5ed75e;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-top: 3px;
+  cursor: pointer;
+}
+.select:hover {
+  border-color: #85ec4d;
+}
+
 
 .normal {
   background-color: #bfbfbf;
@@ -595,4 +624,33 @@ body {
 }
 .shadow {
   background-color: #364163;
+}
+
+.retro-container {
+  position: absolute;
+  background-color: beige;
+  border: 3px solid green;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.star-text, .level-text {
+  color: black;
+  margin-right: 10px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 50%; /* Ajusta este valor según el progreso */
+  height: 100%;
+  background: linear-gradient(to right, red, green);
 }
