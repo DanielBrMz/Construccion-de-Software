@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+/* form */
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #cbdbff;
+}
+
+.title, .slogan {
+  text-align: center;
+}
