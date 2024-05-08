@@ -8,7 +8,7 @@ function Register() {
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center" style={{backgroundImage: "url('images/Register-Background.png')"}}>
               <h1 className="text-white text-3xl mb-3">Welcome</h1>
               <div>
-                <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suspendisse aliquam varius rutrum purus maecenas ac <a href="#" className="text-purple-500 font-semibold">Learn more</a></p>
+                <img src="../../src/assets/signup.svg" alt="Signup vro" />
               </div>
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">

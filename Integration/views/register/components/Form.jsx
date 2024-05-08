@@ -50,40 +50,65 @@ function Form() {
     <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-2 gap-5">
         <input
+          onChange={handleChange}
           type="text"
+          name="name"
+          value={form.name}
           placeholder="Name"
-          className="border border-gray-400 py-1 px-2"
+          className="border border-gray-400 py-1 px-2 h-12"
         />
         <input
+          onChange={handleChange}
           type="text"
+          name="userName"
+          value={form.userName}
           placeholder="Nick Name"
-          className="border border-gray-400 py-1 px-2"
+          className="border border-gray-400 py-1 px-2 h-12"
         />
       </div>
       <div className="mt-5">
         <input
+          onChange={handleChange}
           type="text"
+          name="email"
+          value={form.email}
           placeholder="Email"
-          className="border border-gray-400 py-1 px-2 w-full"
+          className="border border-gray-400 py-1 px-2 w-full h-12"
         />
       </div>
       <div className="mt-5">
         <input
+          onChange={handleChange}
           type="text"
+          name="address"
+          value={form.address}
           placeholder="Address"
-          className="border border-gray-400 py-1 px-2 w-full"
+          className="border border-gray-400 py-1 px-2 w-full h-12"
         />
       </div>
       <div className="mt-5">
         <input
+          onChange={handleChange}
           type="text"
+          name="phone"
+          value={form.phone}
+          placeholder="Phone Number"
+          className="border border-gray-400 py-1 px-2 w-full h-12"
+        />
+      </div>
+      <div className="mt-5">
+        <input
+          onChange={handleChange}
+          type="text"
+          name="age"
+          value={form.age}
           placeholder="Age"
-          className="border border-gray-400 py-1 px-2 w-full"
+          className="border border-gray-400 py-1 px-2 w-full h-12"
         />
       </div>
       <div className="mt-5">
         <select
-          className="border border-gray-400 py-1 px-2 w-full"
+          className="border border-gray-400 py-1 px-2 w-full h-12"
           name="gender"
           value={form.gender}
           onChange={handleChange}
