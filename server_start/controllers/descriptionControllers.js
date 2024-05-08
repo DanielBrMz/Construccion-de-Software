@@ -13,5 +13,18 @@ async function getDescriptionById(req, res) {
     }
 }
 
+async function createDescription(req, res) {
+    const { description, prescription } = req.body;
+    const { user_id } = req.params;
 
-module.exports = { getDescriptionById };
+    try {
+        const newDescription = await descriptionModel.createDescription(description, prescription, user_id);
+        res.json(newDescription);
+    } catch (err) {
+        res.status(500).send('Mal pedo creando un description');
+        console.log('Error in create user', err);
+    }
+}
+
+
+module.exports = { getDescriptionById, createDescription };

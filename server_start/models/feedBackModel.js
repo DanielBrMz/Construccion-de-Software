@@ -9,7 +9,17 @@ const getFeedBackById = async (id) => {
         console.log('Error getting FeedBack by id', err);
         throw new Error(err);
     }
-
 }
 
-module.exports = { getFeedBackById };
+const createFeedBack = async (feedBack, user_id) => {
+    try{
+        const query = 'INSERT INTO FeedBack (FeedBack, user_id, date) VALUES ($1, $2, NOW()) RETURNING *';
+        const { rows } = await db.query(query, [feedBack, user_id]);
+        return rows[0];
+    }catch (err) {
+        console.log('No pudiste crear un feedback, mal pedo', err);
+        throw new Error(err);
+    }
+}
+
+module.exports = { getFeedBackById, createFeedBack };
