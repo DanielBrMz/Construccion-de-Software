@@ -17,8 +17,8 @@ const getUserById = async (id) => {
 const createUser = async (user) => {
     try {
   
-        const query = 'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *';
-        const { rows } = await db.query(query, [user.name, user.email]);    
+        const query = 'INSERT INTO users (username, email, address, phone, age, gender) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+        const { rows } = await db.query(query, [user.userName, user.email, user.address, user.phone, user.age, user.gender]);    
         return rows[0];
    
 }catch (err) {
@@ -50,4 +50,4 @@ const deleteUser = async (id) => {
 } 
 
 
-module.exports = {getAllUsers, getUserById, createUser}
+module.exports = {getAllUsers, getUserById, createUser, updateUser, deleteUser}

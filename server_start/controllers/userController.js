@@ -12,7 +12,7 @@ async function getAllUsers(req, res) {
    
     }catch (err ){
     
-        res.status(500).send('sos gilipollas ');
+        res.status(500).send('u dumb');
         console.log('This is an error', err);
     }
 
@@ -27,7 +27,7 @@ async function getUserById(req, res) {
         const user = await UserModel.getUserById(id);
         res.json(user);
     } catch (err) {
-        res.status(500).send('sos gilipollas lol');
+        res.status(500).send('u dumb lol');
         console.log('This is an error in create user by id', err);
     }
 }
