@@ -1,10 +1,6 @@
-import { db } from '../config/db';
+// this model will got all the queries to the database 
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+const {db} = require('../config/db')
 
 const getAllUsers = async () => {
     const query = 'SELECT * FROM users ORDER BY id ASC';
@@ -12,13 +8,13 @@ const getAllUsers = async () => {
     return rows;
 }
 
-const getUserById = async (id: string) => {
+const getUserById = async (id) => {
     const query = 'SELECT * FROM users WHERE id = $1';
     const { rows } = await db.query(query, [id]);
     return rows[0];
 }
 
-const createUser = async (user: User) => {
+const createUser = async (user) => {
     try {
   
         const query = 'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *';
@@ -31,7 +27,7 @@ const createUser = async (user: User) => {
 }
 }
 
-const updateUser = async (id: string, user: User) => {
+const updateUser = async (id, user) => {
     try {
         const query = 'UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING *';
         const { rows } = await db.query(query, [user.name, user.email, id]);
@@ -42,7 +38,7 @@ const updateUser = async (id: string, user: User) => {
     }
 }
 
-const deleteUser = async (id: string) => {
+const deleteUser = async (id) => {
     try {
         const query = 'DELETE FROM users WHERE id = $1';
         await db.query(query, [id]);
@@ -51,7 +47,7 @@ const deleteUser = async (id: string) => {
         console.log('Error deleting user', err);
         return err;
     }
-}
+} 
 
 
-export default {getAllUsers, getUserById, createUser, updateUser, deleteUser}
+module.exports = {getAllUsers, getUserById, createUser}
