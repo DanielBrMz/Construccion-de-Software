@@ -1,5 +1,11 @@
 import { SERVER_URL } from "../Constants/serverConstants";
-import { Description } from "../types";
+import { Description, User } from "../types";
+
+export default async function getDescriptions(
+  userid: string
+): Promise<(Description & User)[]> {
+  return fetch(`${SERVER_URL}/description/${userid}`).then((res) => res.json());
+}
 
 export const postDescription = async (
   userid: string,
