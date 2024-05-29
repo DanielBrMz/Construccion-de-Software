@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { Form } from "../../hooks/useForm";
 import { Button } from "../ui/button";
-import postDescription from "@/api/postDescription";
 import { Loader2 } from "lucide-react";
 import { useToast } from "../ui/use-toast";
-import postChat from "@/api/postChat";
+import { Description } from "../../types";
+import { SERVER_URL } from "../../Constants/serverConstants";
 
 type FormKeys = "prescription" | "description";
 
@@ -14,6 +14,32 @@ interface CrudSectionProps {
   form: Form<FormKeys>;
   userid: string;
 }
+
+const postDescription = async (
+  userid: string,
+  { description }: { description: string }
+): Promise<Description> => {
+  return fetch(`${SERVER_URL}/description/${userid}`, {
+    method: "POST",
+    body: JSON.stringify({ description }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+};
+
+const postChat = async (
+  prompt: string,
+  rag?: boolean
+): Promise<{ answer: string }> => {
+  return fetch(`${SERVER_URL}/chat/`, {
+    method: "POST",
+    body: rag ? JSON.stringify({ prompt, rag }) : JSON.stringify({ prompt }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+};
 
 const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
   const { toast } = useToast();
@@ -103,9 +129,7 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
           className="w-full flex space-x-3"
         >
           <span>Generate help</span>
-          {isLoading && (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          )}
+          {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
         </Button>
       </div>
     </div>
