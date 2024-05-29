@@ -4,8 +4,7 @@ import { Form } from "../../hooks/useForm";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import { useToast } from "../ui/use-toast";
-import { Description } from "../../types";
-import { SERVER_URL } from "../../Constants/serverConstants";
+import { postChat, postDescription } from "../../utils/httpUtils";
 
 type FormKeys = "prescription" | "description";
 
@@ -14,32 +13,6 @@ interface CrudSectionProps {
   form: Form<FormKeys>;
   userid: string;
 }
-
-const postDescription = async (
-  userid: string,
-  { description }: { description: string }
-): Promise<Description> => {
-  return fetch(`${SERVER_URL}/description/${userid}`, {
-    method: "POST",
-    body: JSON.stringify({ description }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => res.json());
-};
-
-const postChat = async (
-  prompt: string,
-  rag?: boolean
-): Promise<{ answer: string }> => {
-  return fetch(`${SERVER_URL}/chat/`, {
-    method: "POST",
-    body: rag ? JSON.stringify({ prompt, rag }) : JSON.stringify({ prompt }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => res.json());
-};
 
 const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
   const { toast } = useToast();
