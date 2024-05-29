@@ -17,6 +17,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "antd": "^5.18.0",
     "class-variance-authority": "^0.7.0",
+    "lucide-react": "^0.390.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-resizable-panels": "^2.0.19",

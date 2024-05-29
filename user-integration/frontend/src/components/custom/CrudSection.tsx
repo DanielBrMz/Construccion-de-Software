@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { Form } from "../../hooks/useForm";
 import { Button } from "../ui/button";
-import { useMutation, useQueryClient } from "react-query";
 import postDescription from "@/api/postDescription";
 import { Loader2 } from "lucide-react";
 import { useToast } from "../ui/use-toast";
@@ -18,58 +17,55 @@ interface CrudSectionProps {
 
 const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
   const { toast } = useToast();
-  const queryClient = useQueryClient();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const saveEntry = useMutation({
-    mutationKey: ["saveEntry", userid],
-    mutationFn: () => {
+  const saveEntry = async () => {
+    setIsLoading(true);
+    try {
       if (!form.values.description || !form.values.prescription)
         throw new Error("Please fill out all fields");
-      return postDescription(userid, form.values);
-    },
-    onError: (e: Error) => {
-      toast({
-        title: "Failed to save entry",
-        description: `Full message: ${e.message}`,
-      });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["descriptions", userid]);
+      await postDescription(userid, form.values);
       form.setValues({ description: "", prescription: "" });
       toast({
         title: "Saved entry",
         description: "Successfully saved entry",
       });
-    },
-  });
+    } catch (e) {
+      toast({
+        title: "Failed to save entry",
+        description: `Full message: ${e}`,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  const generateHelp = useMutation({
-    mutationKey: ["generateHelp", userid],
-    mutationFn: () => {
+  const generateHelp = async () => {
+    setIsLoading(true);
+    try {
       if (!form.values.description)
         throw new Error("Please fill out the description field");
 
-      return postChat(
+      const data = await postChat(
         `Hello from the player! Given you the following description of 
         a patient: ${form.values.description}. Please return the prescription in a 
         short bullet point format.`,
         true
       );
-    },
-    onError: (e: Error) => {
-      toast({
-        title: "Failed to generate help",
-        description: `Full message: ${e.message}`,
-      });
-    },
-    onSuccess: (data) => {
       form.setValue("prescription", data.answer);
       toast({
         title: "Generated help",
         description: "Successfully generated help",
       });
-    },
-  });
+    } catch (e) {
+      toast({
+        title: "Failed to generate help",
+        description: `Full message: ${e}`,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="grid gap-y-8">
@@ -94,20 +90,20 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
 
       <div className="grid grid-cols-2 gap-8">
         <Button
-          onClick={() => saveEntry.mutate()}
-          disabled={saveEntry.isLoading}
+          onClick={() => saveEntry}
+          disabled={isLoading}
           className="w-full flex space-x-3"
         >
           <span>Save entry</span>
-          {saveEntry.isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+          {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
         </Button>
         <Button
-          onClick={() => generateHelp.mutate()}
-          disabled={generateHelp.isLoading}
+          onClick={() => generateHelp}
+          disabled={isLoading}
           className="w-full flex space-x-3"
         >
           <span>Generate help</span>
-          {generateHelp.isLoading && (
+          {isLoading && (
             <Loader2 className="h-4 w-4 animate-spin" />
           )}
         </Button>
