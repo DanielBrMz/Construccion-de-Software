@@ -5,6 +5,20 @@ export const getUser = async (userid: string): Promise<User> => {
   return await fetch(`${SERVER_URL}/users/${userid}`).then((res) => res.json());
 };
 
+export const postUser = async (data: User): Promise<User> => {
+  return fetch("/api/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ...data,
+      age: data.age ? data.age : undefined,
+    }),
+  }).then((res) => res.json());
+};
+
+
 export const getDescriptions = async (
   userid: string
 ): Promise<(Description & User)[]> => {
