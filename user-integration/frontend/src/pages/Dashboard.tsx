@@ -1,5 +1,5 @@
 import SafeArea from "../components/custom/SafeArea";
-import UsersSection from "../components/custom/UsersSection";
+import UsersSection from "../components/custom/UserSection";
 import React from "react";
 
 interface DashboardProps {

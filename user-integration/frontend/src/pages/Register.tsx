@@ -16,12 +16,15 @@ const Register: React.FC<RegisterProps> = () => {
   //const { toast } = useToast();
 
   const form = useForm({
-    email: "",
-    bio: "",
     name: "",
-    address: "",
-    phone: "",
     age: "",
+    phone: "",
+    email: "",
+    maritalStatus: "",
+    occupation: "",
+    educationLevel: "",
+    previousDiagnosis: "",
+    Gender: "",
   });
 
   /* const registerUser = useMutation({
@@ -61,7 +64,8 @@ const Register: React.FC<RegisterProps> = () => {
             <h1 className="text-2xl font-semibold">Register new user</h1>
             <div className="grid grid-cols-2">
               <div className="flex flex-col space-y-6">
-                <Input
+              <div className="grid grid-cols-2 gap-6">
+              <Input
                   type="text"
                   placeholder="Name*"
                   className="input"
@@ -69,20 +73,12 @@ const Register: React.FC<RegisterProps> = () => {
                   onChange={form.handleKey("name")}
                 />
                 <Input
-                  type="text"
-                  placeholder="Email*"
-                  className="input"
-                  value={form.values.email}
-                  onChange={form.handleKey("email")}
-                />
-                <Input
-                  type="text"
-                  placeholder="Address"
-                  className="input"
-                  value={form.values.address}
-                  onChange={form.handleKey("address")}
-                />
-                <div className="grid grid-cols-2 gap-6">
+                    type="number"
+                    placeholder="Age"
+                    className="input"
+                    value={form.values.age}
+                    onChange={form.handleKey("age")}
+                  />
                   <Input
                     type="tel"
                     placeholder="Phone"
@@ -91,23 +87,45 @@ const Register: React.FC<RegisterProps> = () => {
                     onChange={form.handleKey("phone")}
                   />
                   <Input
-                    type="number"
-                    placeholder="Age"
-                    className="input"
-                    value={form.values.age}
-                    onChange={form.handleKey("age")}
-                  />
-                </div>
-                <Textarea
-                  placeholder="Bio"
-                  className="h-32"
-                  value={form.values.bio}
-                  onChange={form.handleKey("bio")}
+                  type="text"
+                  placeholder="Marital Status"
+                  className="input"
+                  value={form.values.maritalStatus}
+                  onChange={form.handleKey("maritalStatus")}
                 />
+                <Input
+                  type="text"
+                  placeholder="Education Level"
+                  className="input"
+                  value={form.values.educationLevel}
+                  onChange={form.handleKey("educationLevel")}
+                />
+                <Input
+                  type="text"
+                  placeholder="Occupation"
+                  className="input"
+                  value={form.values.occupation}
+                  onChange={form.handleKey("occupation")}
+                />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Email*"
+                  className="input"
+                  value={form.values.email}
+                  onChange={form.handleKey("email")}
+                />
+                <Textarea
+                  placeholder="Previous Diagnosis"
+                  className="h-32"
+                  value={form.values.previousDiagnosis}
+                  onChange={form.handleKey("previousDiagnosis")}
+                />
+                
                 <Button
                   onClick={() => console.log("register")}
                   disabled={false}
-                  className="w-full flex space-x-3"
+                  className="w-full flex space-x-3 bg-green-600 text-white"
                 >
                   <span>Register User</span>
                   {/* {registerUser.isLoading && (
