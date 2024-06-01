@@ -1,4 +1,4 @@
-import getDescriptions from "../../utils/httpUtils";
+import { getDescriptions } from "../../utils/httpUtils";
 import React, { useEffect, useState } from "react";
 import DescriptionCard from "./DescriptionCard";
 import { Input } from "../ui/input";
@@ -44,7 +44,6 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
 
     fetchDescriptions();
   }, [userid]);
-
 
   if (isLoading) {
     return (
@@ -102,11 +101,9 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
             <h2 className="text-black/40">No descriptions found</h2>
           </div>
         )}
-        {filterDescriptions(descriptions, searchTerm).map(
-          (description) => (
-            <DescriptionCard key={description.id} description={description} />
-          )
-        )}
+        {filterDescriptions(descriptions, searchTerm).map((description) => (
+          <DescriptionCard key={description.id} description={description} />
+        ))}
       </div>
     </div>
   );

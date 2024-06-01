@@ -5,7 +5,7 @@ export type User = {
   age: number;
   gender: string;
   maritalStatus: string;
-  ocupation: string;
+  occupation: string;
   educationLevel: string;
   previousDiagnosis: string;
   medication: string;
