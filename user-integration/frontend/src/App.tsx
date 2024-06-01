@@ -1,20 +1,35 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./pages/Register";
-import Login from "./pages/Login";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
+import UserPage from "./pages/User";
+import Navigation from "./components/custom/Navigation";
+import { Toaster } from "./components/ui/toaster";
+import Register from "./pages/Register";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Dashboard />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/user/:userid",
+    element: <UserPage />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement: <NotFound />,
+  },
+]);
+
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/register" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <>
+      <Toaster />
+      <Navigation />
+      <RouterProvider router={router} />
+    </>
   );
 }
-
-export default App;
-
