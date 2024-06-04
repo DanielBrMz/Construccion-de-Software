@@ -1,8 +1,19 @@
+import SafeArea from "@/components/custom/SafeArea";
+import UsersSection from "@/components/custom/UsersSection";
+import React from "react";
 
-const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
+interface DashboardProps {
+  children?: React.ReactNode;
 }
 
-export default Dashboard
+const Dashboard: React.FC<DashboardProps> = () => {
+  return (
+    <div>
+      <SafeArea>
+        <UsersSection />
+      </SafeArea>
+    </div>
+  );
+};
+
+export default Dashboard;
