@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserCard, UserSkeleton } from "./UserCard";
 import { Input } from "../ui/input";
 import { SERVER_URL } from "../../Constants/serverConstants";
@@ -25,8 +25,11 @@ function filterUsers(users: User[], searchTerm: string): User[] {
 
 const UsersSection: React.FC<UsersSectionProps> = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [users, setUsers] = useState<User[]>([]);
 
-  const users = getUsers().then((data) => data).catch((err) => console.error(err));
+  useEffect(() => {
+    getUsers().then(setUsers).catch(console.error);
+  }, []);
 
   if (!users) {
     return (
