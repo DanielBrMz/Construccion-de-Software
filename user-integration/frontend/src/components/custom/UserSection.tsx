@@ -1,6 +1,4 @@
-//import { User, getUsers } from "@/api/getUsers";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import { UserCard, UserSkeleton } from "./UserCard";
 import { Input } from "../ui/input";
 import { SERVER_URL } from "../../Constants/serverConstants";
@@ -10,9 +8,9 @@ interface UsersSectionProps {
   children?: React.ReactNode;
 }
 
-const getUsers = async () => {
-  const response = await fetch(`${SERVER_URL}/users`);
-  const data = await response.json();
+const getUsers = async (): Promise<User[]> => {
+  const response = await fetch(`${SERVER_URL}/users`).then((res) => res.json()).catch((err) => console.error(err));
+  const data = response.data as User[];
   return data;
 }
 
@@ -28,12 +26,9 @@ function filterUsers(users: User[], searchTerm: string): User[] {
 const UsersSection: React.FC<UsersSectionProps> = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const users = useQuery({
-    queryKey: ["users"],
-    queryFn: getUsers,
-  });
+  const users = getUsers().then((data) => data).catch((err) => console.error(err));
 
-  if (users.isLoading) {
+  if (!users) {
     return (
       <div className="px-4 py-12 grid gap-y-10">
         <div className="flex flex-col space-y-6">
@@ -54,10 +49,6 @@ const UsersSection: React.FC<UsersSectionProps> = () => {
     );
   }
 
-  if (users.isError || !users.data) {
-    return <div>Something went wrong</div>;
-  }
-
   return (
     <div className="px-4 py-12 grid gap-y-10">
       <div className="flex flex-col space-y-6">
@@ -70,7 +61,7 @@ const UsersSection: React.FC<UsersSectionProps> = () => {
         />
       </div>
       <div className="grid grid-cols-3">
-        {filterUsers(users.data, searchTerm).map((user) => {
+        {filterUsers(users, searchTerm).map((user) => {
           return <UserCard key={user.id} user={user} />;
         })}
       </div>
