@@ -1,11 +1,19 @@
-import { User, getUsers } from "@/api/getUsers";
+//import { User, getUsers } from "@/api/getUsers";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { UserCard, UserSkeleton } from "./UserCard";
 import { Input } from "../ui/input";
+import { SERVER_URL } from "../../Constants/serverConstants";
+import { User } from "../../types";
 
 interface UsersSectionProps {
   children?: React.ReactNode;
+}
+
+const getUsers = async () => {
+  const response = await fetch(`${SERVER_URL}/users`);
+  const data = await response.json();
+  return data;
 }
 
 function filterUsers(users: User[], searchTerm: string): User[] {
