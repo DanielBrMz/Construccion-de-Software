@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const userRoutes = require('./routes/userRoutes');
 const descriptionRoutes = require('./routes/descriptionRoutes');
 const feedBackRoutes = require('./routes/feedBackRoutes');
-//const chatRoutes = require('./routes/chatRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 app.get('/', (req, res) => {
     // res.send('Hello World');
