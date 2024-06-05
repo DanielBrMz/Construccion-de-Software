@@ -28,4 +28,4 @@ app.listen(port, () => {
 app.use('/users', userRoutes);
 app.use('/descriptions', descriptionRoutes);
 app.use('/feedBack', feedBackRoutes);
-//app.use('/chat', chatRoutes);
+app.use('/chat', chatRoutes);
