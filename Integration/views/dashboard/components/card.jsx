@@ -17,7 +17,7 @@ function Card({ user }) {
             width: '320px',  // Adjusted width to fit the image and text
             height: '80px',  // Adjusted height to fit the image and text
             borderRadius: '5px',
-            backgroundColor: '#df3078',  // Correct hex value for background color
+            backgroundColor: '#81b71a',  // Correct hex value for background color
             display: 'flex',
             flexDirection: 'row',  // Arrange children horizontally
             alignItems: 'center',
