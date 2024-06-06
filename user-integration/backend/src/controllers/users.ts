@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import sql from "../config/db";
-import UserModel from "../models/userModel";
+import UserModel from "../models/users";
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
