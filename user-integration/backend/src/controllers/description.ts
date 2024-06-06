@@ -27,7 +27,7 @@ const createDescription = async (
     const { description } = req.body;
     const newDescription = await DescriptionModel.createDescription(
       description,
-      user_id
+      parseInt(user_id)
     );
     res.json(newDescription);
   } catch (err) {

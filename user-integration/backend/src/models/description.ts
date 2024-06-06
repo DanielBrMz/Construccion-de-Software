@@ -4,14 +4,14 @@ const getDescriptionByid = async (id: number) => {
   const { data, error } = await supabase
     .from("description")
     .select("*")
-    .eq("id", id);
+    .eq("user_id", id);
   if (error) {
     throw new Error(`Description could not be retrieved because of: ${error}`);
   }
   return data;
 };
 
-const createDescription = async (description: string, user_id: string) => {
+const createDescription = async (description: string, user_id: number) => {
   const { data, error } = await supabase
     .from("description")
     .insert([{ description, user_id }]);
