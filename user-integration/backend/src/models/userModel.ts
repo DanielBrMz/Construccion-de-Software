@@ -16,4 +16,9 @@ const createUser = async (user: User) => {
   return data;
 };
 
-export default { getAllUsers, getUserById, createUser };
+const updateUser = async (id: string, user: User) => {
+  const { data } = await supabase.from("users").update(user).eq("id", id);
+  return data;
+}
+
+export default { getAllUsers, getUserById, createUser, updateUser };
