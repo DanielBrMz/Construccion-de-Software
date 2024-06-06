@@ -21,4 +21,10 @@ const updateUser = async (id: string, user: User) => {
   return data;
 }
 
-export default { getAllUsers, getUserById, createUser, updateUser };
+const deleteUser = async (id: string) => {
+  const { data } = await supabase.from("users").delete().eq("id", id);
+  return data;
+
+}
+
+export default { getAllUsers, getUserById, createUser, updateUser, deleteUser };
