@@ -1,11 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import sql from "../config/db";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import supabase from '../config/db';
 
-const createUser = async (req: Request, res: Response, next: NextFunction) => {
+const getAllUsers = async () => {
+  const { data } = await supabase.from('users').select()
+  return data;
+}
 
-};
-
-
-export default { };
+export default { getAllUsers };
