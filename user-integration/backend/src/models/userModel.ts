@@ -5,4 +5,9 @@ const getAllUsers = async () => {
   return data;
 }
 
-export default { getAllUsers };
+const getUserById = async (id: string) => {
+  const { data } = await supabase.from('users').select().eq('id', id)
+  return data;
+}
+
+export default { getAllUsers, getUserById };
