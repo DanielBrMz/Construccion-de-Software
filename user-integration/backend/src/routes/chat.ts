@@ -82,7 +82,9 @@ async function getRagContext(
   ];
 }
 
-export const chatRouter = express.Router();
+const chatRouter: express.Router = express.Router();
+
+export default chatRouter;
 
 chatRouter.post("/", async (req, res) => {
   const { prompt, rag } = req.body;
