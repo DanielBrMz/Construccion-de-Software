@@ -4,7 +4,7 @@ import feedbackModel from "../models/feedback";
 const getFeedbackById = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   try {
     const { id } = req.params;
@@ -20,7 +20,7 @@ const getFeedbackById = async (
 const createFeedback = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   try {
     const { user_id } = req.params;

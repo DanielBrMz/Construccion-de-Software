@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import UserModel from "../models/users";
 
-const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
+const getAllUsers = async (req: Request, res: Response, _next: NextFunction) => {
   try {
     const users = await UserModel.getAllUsers();
     res.json(users);
@@ -10,7 +10,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const getUserById = async (req: Request, res: Response, next: NextFunction) => {
+const getUserById = async (req: Request, res: Response, _next: NextFunction) => {
   try {
     const { id } = req.params;
     const user = await UserModel.getUserById(id);
@@ -18,12 +18,77 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
   } catch (err) {
     res.status(500).send(`User could not be retrieved because of: ${err}`);
   }
-}
+};
 
-const createUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {};
+const createUser = async (req: Request, res: Response, _next: NextFunction) => {
+  try {
+    const {
+      name,
+      email,
+      age,
+      gender,
+      maritalStatus,
+      ocupation,
+      educationLevel,
+      previousDiagnosis,
+      medication,
+    } = req.body;
+    const user = await UserModel.createUser({
+      name,
+      email,
+      age,
+      gender,
+      maritalStatus,
+      ocupation,
+      educationLevel,
+      previousDiagnosis,
+      medication,
+    });
+    res.json(user);
+  } catch (err) {
+    res.status(500).send(`User could not be created because of: ${err}`);
+  }
+};
 
-export default {getAllUsers, getUserById, createUser};
+const updateUser = async (req: Request, res: Response, _next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      email,
+      age,
+      gender,
+      maritalStatus,
+      ocupation,
+      educationLevel,
+      previousDiagnosis,
+      medication,
+    } = req.body;
+    const user = await UserModel.updateUser(id, {
+      name,
+      email,
+      age,
+      gender,
+      maritalStatus,
+      ocupation,
+      educationLevel,
+      previousDiagnosis,
+      medication,
+    });
+    res.json(user);
+  } catch (err) {
+    res.status(500).send(`User could not be updated because of: ${err}`);
+  }
+};
+
+const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const user = await UserModel.deleteUser(id);
+    res.json(user);
+  } catch (err) {
+    res.status(500).send(`User could not be deleted because of: ${err}`);
+  }
+};
+
+export default { getAllUsers, getUserById, createUser, updateUser, deleteUser };

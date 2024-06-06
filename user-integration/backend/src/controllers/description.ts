@@ -4,7 +4,7 @@ import DescriptionModel from "../models/description";
 const getDescriptionByid = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   try {
     const { id } = req.params;
@@ -20,7 +20,7 @@ const getDescriptionByid = async (
 const createDescription = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   try {
     const { user_id } = req.params;

@@ -4,7 +4,7 @@ import { openai } from "../utils/openai";
 import { SYSTEM_PROMPT } from "../constants/ragConstants";
 
 
-const getRagContext = async (req: Request, res: Response, next: NextFunction) => {
+const getRagContext = async (req: Request, res: Response, _next: NextFunction) => {
   const { prompt, rag } = req.body;
 
   if (!prompt) {
