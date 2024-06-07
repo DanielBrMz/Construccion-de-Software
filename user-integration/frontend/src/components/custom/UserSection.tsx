@@ -10,15 +10,14 @@ interface UsersSectionProps {
 
 const getUsers = async (): Promise<User[]> => {
   const response = await fetch(`${SERVER_URL}/users`).then((res) => res.json()).catch((err) => console.error(err));
-  const data = response.data as User[];
-  return data;
+  return response;
 }
 
 function filterUsers(users: User[], searchTerm: string): User[] {
   return users.filter((user) => {
     return (
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      user.name!.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email!.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
 }
@@ -27,9 +26,10 @@ const UsersSection: React.FC<UsersSectionProps> = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [users, setUsers] = useState<User[]>([]);
 
+  
   useEffect(() => {
-    getUsers().then(setUsers).catch(console.error);
-  }, []);
+    getUsers().then((users)=>setUsers(users)).catch(console.error);
+  }, [users]);
 
   if (!users) {
     return (

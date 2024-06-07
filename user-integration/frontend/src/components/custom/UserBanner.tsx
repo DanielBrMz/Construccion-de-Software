@@ -20,13 +20,14 @@ const UserBanner: React.FC<UserBannerProps> = ({ userid }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [seeMore, setSeeMore] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchUser = async () => {
       setIsLoading(true);
       try {
         const data = await getUser(userid);
-        setUser(data);
+        setUser(data[0]);
       } catch (error) {
         setIsError(true);
       } finally {
@@ -39,7 +40,7 @@ const UserBanner: React.FC<UserBannerProps> = ({ userid }) => {
 
   if (isLoading) {
     return (
-      <div className="shadow-md bg-white">
+      <div className="shadow-md bg-gray col-span-2">
         <SafeArea>
           <div className="flex justify-between">
             <div className="flex space-x-8 px-4 py-8">
@@ -75,14 +76,14 @@ const UserBanner: React.FC<UserBannerProps> = ({ userid }) => {
   }
 
   return (
-    <div className="shadow-md bg-white">
+    <div className="shadow-md bg-gray col-span-2">
       <SafeArea>
         <div className="flex justify-between">
           <div className="flex space-x-8 px-4 py-8">
             <Avatar className="w-24 h-24 shadow-md rounded-full">
               <AvatarFallback>
                 <AvatarFallback className="text-4xl">
-                  {getInitials(user.name)}
+                  {getInitials(user.name!)}
                 </AvatarFallback>
               </AvatarFallback>
             </Avatar>
@@ -92,24 +93,28 @@ const UserBanner: React.FC<UserBannerProps> = ({ userid }) => {
             </div>
           </div>
           <div className="flex flex-col text-gray-500 space-y-1 justify-center items-end">
-            <div className="flex space-x-2 items-center">
-              <p className="text-sm font-light">
-                {user.age ? `${user.age} years old` : "18 years old"}
-              </p>
-              <Hash className="w-4 h-4" />
-            </div>
-            <div className="flex space-x-2 items-center">
-              <p className="text-sm font-light">
-                {user.gender ?? "unknown"}
-              </p>
-              <Phone className="w-4 h-4" />
-            </div>
-            <div className="flex space-x-2 items-center">
-              <p className="text-sm font-light">
-                {user.occupation ?? "Unkown"}
-              </p>
-              <LocateFixedIcon className="w-4 h-4" />
-            </div>
+            {seeMore && (
+              <>
+                <div className="flex space-x-2 items-center">
+                  <p className="text-sm font-light">
+                    {user.age ? `${user.age} years old` : "18 years old"}
+                  </p>
+                  <Hash className="w-4 h-4" />
+                </div>
+                <div className="flex space-x-2 items-center">
+                  <p className="text-sm font-light">
+                    {user.gender ?? "unknown"}
+                  </p>
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div className="flex space-x-2 items-center">
+                  <p className="text-sm font-light">
+                    {user.occupation ?? "Unkown"}
+                  </p>
+                  <LocateFixedIcon className="w-4 h-4" />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </SafeArea>

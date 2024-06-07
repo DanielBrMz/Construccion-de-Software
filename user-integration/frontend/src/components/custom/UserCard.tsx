@@ -35,11 +35,11 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
     <Link
       to={`/user/${user.id}`}
-      className="bg-white transition-all hover:bg-gray-100 rounded-md p-4"
+      className="bg-gray transition-all hover:bg-gray-100 rounded-md p-4 mr-4"
     >
       <div className="flex space-x-4">
         <Avatar className="shadow-md rounded-full">
-          <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+          <AvatarFallback>{getInitials(user.name!)}</AvatarFallback>
         </Avatar>
         <div>
           <h2 className="font-semibold">{user.name}</h2>

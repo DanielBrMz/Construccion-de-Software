@@ -1,7 +1,7 @@
 import { SERVER_URL } from "../Constants/serverConstants";
 import { Description, User } from "../types";
 
-export const getUser = async (userid: string): Promise<User> => {
+export const getUser = async (userid: string): Promise<User[]> => {
   return await fetch(`${SERVER_URL}/users/${userid}`).then((res) => res.json());
 };
 

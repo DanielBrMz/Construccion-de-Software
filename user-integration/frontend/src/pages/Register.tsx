@@ -9,6 +9,7 @@ import React from "react";
 import { postUser } from "../utils/httpUtils";
 import Select from "../components/ui/select";
 import Image from "../assets/authentication.svg";
+import { User } from "../types";
 
 interface RegisterProps {
   children?: React.ReactNode;
@@ -55,7 +56,7 @@ const Register: React.FC<RegisterProps> = () => {
     }
 
     try {
-      const response = await postUser(form.values);
+      const response = await postUser(form.values as User);
       form.setValues({
         age: null,
         educationlevel: "",
