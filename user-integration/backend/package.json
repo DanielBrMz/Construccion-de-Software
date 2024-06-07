@@ -12,12 +12,17 @@
   "license": "ISC",
   "packageManager": "pnpm@9.1.2+sha1.907f57a52517de34399d66401bf220a549e47b57",
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "postgres": "^3.4.4",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.2",
     "i": "^0.3.7",
     "typescript": "^5.4.5"
