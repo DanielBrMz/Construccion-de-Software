@@ -1,16 +1,16 @@
 import { getTreatment } from "../../utils/httpUtils";
 import React, { useEffect, useState } from "react";
-import DescriptionCard from "./DescriptionCard";
 import { Input } from "../ui/input";
 import { Skeleton } from "../ui/skeleton";
-import { Description } from "../../types";
+import { Treatment } from "../../types";
+import PrescriptionCard from "./PrescriptionCard";
 
 interface DescriptionsSectionProps {
   children?: React.ReactNode;
   userid: string;
 }
 
-function filterPrescriptions(descriptions: Description[], searchTerm: string) {
+function filterPrescriptions(descriptions: Treatment[], searchTerm: string) {
   return descriptions.filter((description) => {
     return (
       description.description
@@ -25,7 +25,7 @@ const PrescriptionsSection: React.FC<DescriptionsSectionProps> = ({
   userid,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [descriptions, setDescriptions] = useState<Description[]>();
+  const [descriptions, setDescriptions] = useState<Treatment[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -90,7 +90,7 @@ const PrescriptionsSection: React.FC<DescriptionsSectionProps> = ({
         <Input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Filter descriptions..."
+          placeholder="Filter prescriptions..."
           type="text"
         />
       </div>
@@ -102,7 +102,7 @@ const PrescriptionsSection: React.FC<DescriptionsSectionProps> = ({
           </div>
         )}
         {filterPrescriptions(descriptions, searchTerm).map((description) => (
-          <DescriptionCard key={description.id} description={description} />
+          <PrescriptionCard key={description.id} treatment={description} />
         ))}
       </div>
     </div>

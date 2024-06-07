@@ -24,10 +24,6 @@ Open [https://example.com](https://example.com) to view it running LIVE.
 
 ![Register](https://pub-6d6a05d9c29f4adca7c28cd2d7dcd3d9.r2.dev/Register.png)
 
-3. Details
+3. Details and RAG
 
-![Details](./evidence/details.png)
-
-4. RAG
-
-![RAG](./evidence/rag.png)
+![Details](https://pub-6d6a05d9c29f4adca7c28cd2d7dcd3d9.r2.dev/RAG.png)

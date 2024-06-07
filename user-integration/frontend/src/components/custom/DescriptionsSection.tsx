@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import DescriptionCard from "./DescriptionCard";
 import { Input } from "../ui/input";
 import { Skeleton } from "../ui/skeleton";
-import { Description } from "../../types";
+import { Treatment } from "../../types";
 
 interface DescriptionsSectionProps {
   children?: React.ReactNode;
   userid: string;
 }
 
-function filterDescriptions(descriptions: Description[], searchTerm: string) {
+function filterDescriptions(descriptions: Treatment[], searchTerm: string) {
   return descriptions.filter((description) => {
     return (
       description.description
@@ -25,7 +25,7 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
   userid,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [descriptions, setDescriptions] = useState<Description[]>();
+  const [descriptions, setDescriptions] = useState<Treatment[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -102,7 +102,7 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
           </div>
         )}
         {filterDescriptions(descriptions, searchTerm).map((description) => (
-          <DescriptionCard key={description.id} description={description} />
+          <DescriptionCard key={description.id} treatment={description} />
         ))}
       </div>
     </div>

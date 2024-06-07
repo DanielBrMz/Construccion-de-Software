@@ -11,9 +11,10 @@ export type User = {
   previousdiagnosis: string | null;
 };
 
-export type Description = {
+export type Treatment = {
   id: number;
   description: string;
+  prescription: string;
   date: string;
   user_id: number;
 };
