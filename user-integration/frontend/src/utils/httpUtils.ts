@@ -6,7 +6,7 @@ export const getUser = async (userid: string): Promise<User> => {
 };
 
 export const postUser = async (data: User): Promise<User> => {
-  return fetch("/api/users", {
+  return fetch(`${SERVER_URL}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

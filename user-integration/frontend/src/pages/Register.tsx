@@ -2,11 +2,11 @@ import SafeArea from "../components/custom/SafeArea";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
-//import { useToast } from "../components/ui/use-toast";
+import { useToast } from "../components/ui/use-toast";
 import { useForm } from "../hooks/useForm";
-//import { Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import React from "react";
-//import { postUser } from "../utils/httpUtils";
+import { postUser } from "../utils/httpUtils";
 import Select from "../components/ui/select";
 import Image from "../assets/authentication.svg";
 
@@ -27,48 +27,61 @@ const items = [
 ];
 
 const Register: React.FC<RegisterProps> = () => {
-  //const { toast } = useToast();
+  const { toast } = useToast();
 
   const form = useForm({
-    name: "",
-    age: "",
-    phone: "",
+    age: null,
+    educationlevel: "",
     email: "",
-    maritalStatus: "",
+    gender: "",
+    maritalstatus: "",
+    name: "",
     occupation: "",
-    educationLevel: "",
-    previousDiagnosis: "",
-    Gender: "",
+    phone: "",
+    previousdiagnosis: "",
   });
 
-  /* const registerUser = useMutation({
-    mutationKey: ["registerUser"],
-    mutationFn: () => {
-      if (!form.values.email || !form.values.name)
-        throw new Error("Please fill out all required fields");
-      return postUser(form.values);
-    },
-    onError: (e: Error) => {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const registerUser = async () => {
+    setIsLoading(true);
+    if (!form.values.email || !form.values.name) {
       toast({
         title: "Failed to register user",
-        description: `Full message: ${e.message}`,
+        description: `Full message: Please fill out all required fields`,
       });
-    },
-    onSuccess: () => {
+      setIsLoading(false);
+      throw new Error("Please fill out all required fields");
+    }
+
+    try {
+      const response = await postUser(form.values);
       form.setValues({
+        age: null,
+        educationlevel: "",
         email: "",
-        bio: "",
+        gender: "",
+        maritalstatus: "",
         name: "",
-        address: "",
+        occupation: "",
         phone: "",
-        age: "",
+        previousdiagnosis: "",
       });
       toast({
         title: "Registered user",
         description: "Successfully registered user",
       });
-    },
-  }); */
+      setIsLoading(false);
+      return response;
+    } catch (e) {
+      toast({
+        title: "Failed to register user",
+        description: `Full message: ${e}`,
+      });
+      setIsLoading(false);
+      throw e;
+    }
+  };
 
   return (
     <div>
@@ -86,42 +99,42 @@ const Register: React.FC<RegisterProps> = () => {
                     type="text"
                     placeholder="Name*"
                     className="input"
-                    value={form.values.name}
+                    value={form.values.name!}
                     onChange={form.handleKey("name")}
                   />
                   <Input
-                    type="number"
+                    type="text"
                     placeholder="Age"
                     className="input"
-                    value={form.values.age}
+                    value={form.values.age!}
                     onChange={form.handleKey("age")}
                   />
                   <Input
                     type="tel"
                     placeholder="Phone"
                     className="input"
-                    value={form.values.phone}
+                    value={form.values.phone!}
                     onChange={form.handleKey("phone")}
                   />
                   <Input
                     type="text"
                     placeholder="Marital Status"
                     className="input"
-                    value={form.values.maritalStatus}
-                    onChange={form.handleKey("maritalStatus")}
+                    value={form.values.maritalstatus!}
+                    onChange={form.handleKey("maritalstatus")}
                   />
                   <Input
                     type="text"
                     placeholder="Education Level"
                     className="input"
-                    value={form.values.educationLevel}
-                    onChange={form.handleKey("educationLevel")}
+                    value={form.values.educationlevel!}
+                    onChange={form.handleKey("educationlevel")}
                   />
                   <Input
                     type="text"
                     placeholder="Occupation"
                     className="input"
-                    value={form.values.occupation}
+                    value={form.values.occupation!}
                     onChange={form.handleKey("occupation")}
                   />
                 </div>
@@ -129,25 +142,34 @@ const Register: React.FC<RegisterProps> = () => {
                   type="text"
                   placeholder="Email*"
                   className="input"
-                  value={form.values.email}
+                  value={form.values.email!}
                   onChange={form.handleKey("email")}
                 />
                 <Textarea
                   placeholder="Previous Diagnosis"
                   className="h-32"
-                  value={form.values.previousDiagnosis}
-                  onChange={form.handleKey("previousDiagnosis")}
+                  value={form.values.previousdiagnosis!}
+                  onChange={form.handleKey("previousdiagnosis")}
                 />
-                <Select items={items} />
+                <Select
+                  items={items}
+                  onValueChange={(value) => {
+                    const event = {
+                      target: {
+                        value,
+                        name: "gender",
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>;
+                    form.handleKey("gender")(event);
+                  }}
+                />
                 <Button
-                  onClick={() => console.log("register")}
+                  onClick={registerUser}
                   disabled={false}
                   className="w-full flex space-x-3 bg-green-600 text-white"
                 >
                   <span>Register User</span>
-                  {/* {registerUser.isLoading && (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  )} */}
+                  {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
                 </Button>
               </div>
             </div>

@@ -10,10 +10,12 @@ interface Item {
 
 interface SelectDemoProps {
   items: Item[];
+  onValueChange: (value: string) => void;
 }
 
-const SelectDemo: React.FC<SelectDemoProps> = ({ items }) => (
-  <Select.Root>
+
+const SelectDemo: React.FC<SelectDemoProps> = ({ items, onValueChange }) => (
+  <Select.Root onValueChange={onValueChange}>
     <Select.Trigger
       className="inline-flex items-center justify-center rounded px-[15px] text-[13px] leading-none h-[35px] gap-[5px] bg-[#343434] text-violet11 shadow-[0_2px_10px] shadow-black/10 hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-violet9 outline-none"
       aria-label="Food"

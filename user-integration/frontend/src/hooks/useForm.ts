@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { User } from "../types";
 
-export function useForm<K extends string>(initialValues: Record<K, string>) {
+export function useForm<K extends string>(initialValues: User) {
   const [state, setState] = useState(initialValues);
 
   const handleKey = (key: K) => {
@@ -9,7 +10,7 @@ export function useForm<K extends string>(initialValues: Record<K, string>) {
     };
   };
 
-  const setValues = (newValues: Record<K, string>) => {
+  const setValues = (newValues: User) => {
     setState(newValues);
   };
 
