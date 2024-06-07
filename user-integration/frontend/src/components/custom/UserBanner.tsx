@@ -3,7 +3,7 @@ import SafeArea from "./SafeArea";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback } from "../ui/avatar";
 import { Skeleton } from "../ui/skeleton";
-import { Hash, LocateFixedIcon, Phone } from "lucide-react";
+import { Briefcase, ChevronRight, Hash, Phone } from "lucide-react";
 import { getUser } from "../../utils/httpUtils";
 import { User } from "../../types";
 
@@ -78,40 +78,48 @@ const UserBanner: React.FC<UserBannerProps> = ({ userid }) => {
   return (
     <div className="shadow-md bg-gray col-span-2">
       <SafeArea>
-        <div className="flex justify-between">
-          <div className="flex space-x-8 px-4 py-8">
-            <Avatar className="w-24 h-24 shadow-md rounded-full">
-              <AvatarFallback>
-                <AvatarFallback className="text-4xl">
-                  {getInitials(user.name!)}
+        <div className="flex flex-column flex-wrap justify-between items-between min-h-screen">
+          <div className="flex flex-wrap">
+            <div className="flex flex-wrap space-x-8 px-4 pt-8 pb-4 max-h-32">
+              <Avatar className="w-24 h-24 shadow-md rounded-full">
+                <AvatarFallback>
+                  <AvatarFallback className="text-4xl">
+                    {getInitials(user.name!)}
+                  </AvatarFallback>
                 </AvatarFallback>
-              </AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col justify-center space-y-1">
-              <h2 className="text-3xl font-semibold">{user.name}</h2>
-              <p className="text-xl font-light">{user.email}</p>
+              </Avatar>
+              <div className="flex flex-col justify-center space-y-1">
+                <h2 className="text-3xl font-semibold">{user.name}</h2>
+                <p className="text-xl font-light">{user.email}</p>
+              </div>
+              <div className="flex px-4 py-6 max-h-24">
+                <button onClick={() => setSeeMore(!seeMore)}>
+                  Click to see more information
+                </button>
+                <ChevronRight className="w-6 h-6" />
+              </div>
             </div>
           </div>
-          <div className="flex flex-col text-gray-500 space-y-1 justify-center items-end">
+          <div className="flex flex-col text-gray-500 space-y-1 mx-8 justify-center items-start">
             {seeMore && (
               <>
                 <div className="flex space-x-2 items-center">
-                  <p className="text-sm font-light">
-                    {user.age ? `${user.age} years old` : "18 years old"}
-                  </p>
                   <Hash className="w-4 h-4" />
-                </div>
-                <div className="flex space-x-2 items-center">
-                  <p className="text-sm font-light">
-                    {user.gender ?? "unknown"}
+                  <p className="text-md font-light">
+                    {user.age ? user.age + " Years Old" : "unknown"}
                   </p>
-                  <Phone className="w-4 h-4" />
                 </div>
                 <div className="flex space-x-2 items-center">
+                  <Phone className="w-4 h-4" />
+                  <p className="text-sm font-light">
+                    {user.phone ?? "unknown"}
+                  </p>
+                </div>
+                <div className="flex space-x-2 items-center">
+                  <Briefcase className="w-4 h-4" />
                   <p className="text-sm font-light">
                     {user.occupation ?? "Unkown"}
                   </p>
-                  <LocateFixedIcon className="w-4 h-4" />
                 </div>
               </>
             )}

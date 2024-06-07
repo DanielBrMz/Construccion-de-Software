@@ -27,7 +27,7 @@ const UserPage: React.FC<UserPageProps> = () => {
   });
 
   return (
-    <div className="bg-gray-50 grid grid-cols-8 h-screen">
+    <div className="bg-gray-50 grid grid-cols-8 h-screen max-h-[93vh]">
       <UserBanner userid={userid} />
       <SafeArea>
         <ResizablePanelGroup direction="horizontal" className="h-full">
