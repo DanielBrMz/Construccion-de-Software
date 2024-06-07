@@ -1,6 +1,7 @@
 import CrudSection from "../components/custom/CrudSection";
 import DatabaseSection from "../components/custom/DatabaseSection";
 import DescriptionsSection from "../components/custom/DescriptionsSection";
+import PrescriptionsSection from "../components/custom/PrescriptionSection";
 import SafeArea from "../components/custom/SafeArea";
 import UserBanner from "../components/custom/UserBanner";
 import {
@@ -8,7 +9,6 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../components/ui/resizable";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { useForm } from "../hooks/useForm";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -34,22 +34,17 @@ const UserPage: React.FC<UserPageProps> = () => {
           <ResizablePanel defaultSize={40} className="h-full">
             <SafeArea>
               <div className="p-2">
-                <Tabs defaultValue="history" className="w-full">
-                  <TabsList className="w-full">
-                    <TabsTrigger className="w-full" value="history">
-                      History
-                    </TabsTrigger>
-                    <TabsTrigger className="w-full" value="database">
-                      Database
-                    </TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="history">
-                    <DescriptionsSection userid={userid} />
-                  </TabsContent>
-                  <TabsContent value="database">
-                    <DatabaseSection form={form} />
-                  </TabsContent>
-                </Tabs>
+                <DescriptionsSection userid={userid} />
+              </div>
+              <div>
+                <DatabaseSection form={form} />
+              </div>
+            </SafeArea>
+          </ResizablePanel>
+          <ResizablePanel defaultSize={40} className="h-full">
+            <SafeArea>
+              <div className="p-2">
+                <PrescriptionsSection userid={userid} />
               </div>
             </SafeArea>
           </ResizablePanel>

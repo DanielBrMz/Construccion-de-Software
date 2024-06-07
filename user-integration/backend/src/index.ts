@@ -3,7 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import usersRouter from "./routes/users";
 import feedbackRouter from "./routes/feedback";
-import descriptionRouter from "./routes/description";
+import treatmentRouter from "./routes/treatment";
 import chatRouter from "./routes/chat";
 import dotenv from "dotenv";
 
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/users", usersRouter);
 app.use("/feedback", feedbackRouter);
-app.use("/description", descriptionRouter);
+app.use("/treatment", treatmentRouter);
 app.use("/chat", chatRouter);
 
 app.listen(port, () => {

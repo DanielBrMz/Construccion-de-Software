@@ -7,7 +7,7 @@ interface SafeAreaProps {
 const SafeArea = ({ children }: SafeAreaProps) => {
   return (
     <div className="w-full min-w-screen flex items-center justify-center col-span-6">
-      <div className="w-full max-w-5xl">{children}</div>
+      <div className="w-full max-w-8xl">{children}</div>
     </div>
   );
 };

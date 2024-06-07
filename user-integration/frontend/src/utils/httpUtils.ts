@@ -19,17 +19,17 @@ export const postUser = async (data: User): Promise<User> => {
 };
 
 
-export const getDescriptions = async (
+export const getTreatment = async (
   userid: string
 ): Promise<(Description & User)[]> => {
-  return await fetch(`${SERVER_URL}/description/${userid}`).then((res) => res.json());
+  return await fetch(`${SERVER_URL}/treatment/${userid}`).then((res) => res.json());
 };
 
-export const postDescription = async (
+export const postTreatment = async (
   userid: string,
   { description }: { description: string }
 ): Promise<Description> => {
-  return fetch(`${SERVER_URL}/description/${userid}`, {
+  return fetch(`${SERVER_URL}/treatment/${userid}`, {
     method: "POST",
     body: JSON.stringify({ description }),
     headers: {
