@@ -53,7 +53,7 @@ const UsersSection: React.FC<UsersSectionProps> = () => {
   }
 
   return (
-    <div className="px-4 py-12 grid gap-y-10">
+    <div className="px-64 py-12 grid gap-y-10">
       <div className="flex flex-col space-y-6">
         <h1 className="text-3xl font-bold">Patients</h1>
         <Input

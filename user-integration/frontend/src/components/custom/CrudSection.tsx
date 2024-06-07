@@ -4,7 +4,7 @@ import { Form } from "../../hooks/useForm";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import { useToast } from "../ui/use-toast";
-import { postChat, postDescription } from "../../utils/httpUtils";
+import { postChat, postTreatment } from "../../utils/httpUtils";
 
 type FormKeys = "prescription" | "description";
 
@@ -21,10 +21,10 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
   const saveEntry = async () => {
     setIsLoading(true);
     try {
-      if (!form.values.description || !form.values.prescription)
+      if (!(form.values as Record<string, string>).description || !(form.values as Record<string, string>).prescription)
         throw new Error("Please fill out all fields");
-      await postDescription(userid, form.values);
-      form.setValues({ description: "", prescription: "" });
+      await postTreatment(userid, form.values as {description: string, prescription: string});
+      form.setValues({ description: "", prescription: "" } as Record<string, string>);
       toast({
         title: "Saved entry",
         description: "Successfully saved entry",
@@ -42,12 +42,12 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
   const generateHelp = async () => {
     setIsLoading(true);
     try {
-      if (!form.values.description)
+      if (!(form.values as Record<string, string>).description)
         throw new Error("Please fill out the description field");
 
       const data = await postChat(
         `Hello from the player! Given you the following description of 
-        a patient: ${form.values.description}. Please return the prescription in a 
+        a patient: ${(form.values as Record<string, string>).description}. Please return the prescription in a 
         short bullet point format.`,
         true
       );
@@ -71,7 +71,7 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
       <div className="grid gap-y-4">
         <h1 className="text-2xl font-semibold">Description</h1>
         <Textarea
-          value={form.values.description}
+          value={(form.values as Record<string, string>).description}
           onChange={form.handleKey("description")}
           placeholder="Enter description"
           className="h-60"
@@ -80,7 +80,7 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
       <div className="grid gap-y-4">
         <h1 className="text-2xl font-semibold">Prescription</h1>
         <Textarea
-          value={form.values.prescription}
+          value={(form.values as Record<string, string>).prescription}
           onChange={form.handleKey("prescription")}
           placeholder="Enter prescription"
           className="h-60"

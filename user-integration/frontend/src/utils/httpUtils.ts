@@ -27,11 +27,11 @@ export const getTreatment = async (
 
 export const postTreatment = async (
   userid: string,
-  { description }: { description: string }
+  treatment: { description: string, prescription: string}
 ): Promise<Description> => {
   return fetch(`${SERVER_URL}/treatment/${userid}`, {
     method: "POST",
-    body: JSON.stringify({ description }),
+    body: JSON.stringify({ treatment }),
     headers: {
       "Content-Type": "application/json",
     },

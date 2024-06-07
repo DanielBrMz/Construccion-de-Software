@@ -10,7 +10,7 @@ export function useForm<K extends string>(initialValues: User | Record<K, string
     };
   };
 
-  const setValues = (newValues: User) => {
+  const setValues = (newValues: User | Record<string, string>) => {
     setState(newValues);
   };
 

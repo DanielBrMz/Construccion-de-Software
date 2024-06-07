@@ -1,4 +1,4 @@
-import { getDescriptions } from "../../utils/httpUtils";
+import { getTreatment } from "../../utils/httpUtils";
 import React, { useEffect, useState } from "react";
 import DescriptionCard from "./DescriptionCard";
 import { Input } from "../ui/input";
@@ -33,7 +33,7 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
     const fetchDescriptions = async () => {
       setIsLoading(true);
       try {
-        const data = await getDescriptions(userid);
+        const data = await getTreatment(userid);
         setDescriptions(data);
       } catch (error) {
         setIsError(true);

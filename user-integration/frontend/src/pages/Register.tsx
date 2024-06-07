@@ -87,7 +87,7 @@ const Register: React.FC<RegisterProps> = () => {
   return (
     <div>
       <SafeArea>
-        <div className="px-4 py-12 grid gap-y-10">
+        <div className="px-72 py-12 grid gap-y-10">
           <div className="flex flex-col space-y-6">
             <h1 className="text-2xl font-semibold">Register new user</h1>
             <div className="grid grid-cols-2">

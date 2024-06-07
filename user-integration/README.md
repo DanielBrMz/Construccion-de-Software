@@ -18,11 +18,11 @@ Open [https://example.com](https://example.com) to view it running LIVE.
 
 1. Dashboard
 
-![Dashboard](./evidence/dashboard.png)
+![Dashboard](https://pub-6d6a05d9c29f4adca7c28cd2d7dcd3d9.r2.dev/Dashboard.png)
 
 2.Register
 
-![Register](./evidence/register.png)
+![Register](https://pub-6d6a05d9c29f4adca7c28cd2d7dcd3d9.r2.dev/Register.png)
 
 3. Details
 
