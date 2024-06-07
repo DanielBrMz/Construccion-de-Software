@@ -1,12 +1,12 @@
 export type User = {
-  id?: number;
-  name: string;
-  email: string;
-  age: number;
-  gender: string;
-  maritalStatus: string;
-  ocupation: string;
-  educationLevel: string;
-  previousDiagnosis: string;
-  medication: string;
+  age: number | null;
+  educationlevel: string | null;
+  email: string | null;
+  gender: string | null;
+  id: number;
+  maritalstatus: string | null;
+  name: string | null;
+  occupation: string | null;
+  phone: string | null;
+  previousdiagnosis: string | null;
 };

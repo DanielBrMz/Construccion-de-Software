@@ -22,28 +22,8 @@ const getUserById = async (req: Request, res: Response, _next: NextFunction) => 
 
 const createUser = async (req: Request, res: Response, _next: NextFunction) => {
   try {
-    const {
-      name,
-      email,
-      age,
-      gender,
-      maritalStatus,
-      ocupation,
-      educationLevel,
-      previousDiagnosis,
-      medication,
-    } = req.body;
-    const user = await UserModel.createUser({
-      name,
-      email,
-      age,
-      gender,
-      maritalStatus,
-      ocupation,
-      educationLevel,
-      previousDiagnosis,
-      medication,
-    });
+    const userData = req.body;
+    const user = await UserModel.createUser(userData);
     res.json(user);
   } catch (err) {
     res.status(500).send(`User could not be created because of: ${err}`);
@@ -53,28 +33,8 @@ const createUser = async (req: Request, res: Response, _next: NextFunction) => {
 const updateUser = async (req: Request, res: Response, _next: NextFunction) => {
   try {
     const { id } = req.params;
-    const {
-      name,
-      email,
-      age,
-      gender,
-      maritalStatus,
-      ocupation,
-      educationLevel,
-      previousDiagnosis,
-      medication,
-    } = req.body;
-    const user = await UserModel.updateUser(id, {
-      name,
-      email,
-      age,
-      gender,
-      maritalStatus,
-      ocupation,
-      educationLevel,
-      previousDiagnosis,
-      medication,
-    });
+    const userData = req.body;
+    const user = await UserModel.updateUser(id, userData);
     res.json(user);
   } catch (err) {
     res.status(500).send(`User could not be updated because of: ${err}`);
