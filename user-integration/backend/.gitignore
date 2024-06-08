@@ -1,0 +1,32 @@
+# Express with typescript gitignore template 
+
+# Express with TypeScript gitignore template
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore built JavaScript files
+dist/
+
+# Ignore TypeScript build artifacts
+*.js
+*.js.map
+
+# Ignore environment variables file
+.env
+
+# Ignore logs
+logs/
+
+# Ignore editor and IDE files
+.vscode/
+.idea/
+
+# Ignore npm lock file
+package-lock.json
+
+# Ignore yarn lock file
+yarn.lock
+
+# ifnore pnpm lock file
+pnpm-lock.yaml
