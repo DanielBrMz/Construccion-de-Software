@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { Form } from "../../hooks/useForm";
 import { Button } from "../ui/button";
-import postDescription from "@/api/postDescription";
 import { Loader2 } from "lucide-react";
 import { useToast } from "../ui/use-toast";
-import postChat from "@/api/postChat";
+import { postChat, postDescription } from "../../utils/httpUtils";
 
 type FormKeys = "prescription" | "description";
 
@@ -103,9 +102,7 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
           className="w-full flex space-x-3"
         >
           <span>Generate help</span>
-          {isLoading && (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          )}
+          {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
         </Button>
       </div>
     </div>

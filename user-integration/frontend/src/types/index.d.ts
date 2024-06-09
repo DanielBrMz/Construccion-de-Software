@@ -10,3 +10,10 @@ export type User = {
   previousDiagnosis: string;
   medication: string;
 };
+
+export type Description = {
+  id: number;
+  description: string;
+  date: string;
+  user_id: number;
+};
