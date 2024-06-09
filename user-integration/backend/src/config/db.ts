@@ -1,15 +1,14 @@
-import postgres from "postgres";
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
 
-const connectionString = process.env.DATABASE_URL;
+dotenv.config();
 
-if (!connectionString) throw new Error("DATABASE_URL must be provided");
-
-let sql;
-try {
-  sql = postgres(connectionString);
-} catch (error) {
-  console.error('Failed to connect to the database:', error);
-  process.exit(1);
+if (!process.env.VITE_SUPABASE_URL || !process.env.VITE_SUPABASE_ANON_KEY) {
+  throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY');
 }
 
-export default sql;
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+export default supabase
