@@ -6,6 +6,6 @@ export type User = {
   maritalStatus: string;
   ocupation: string;
   educationLevel: string;
-  previosDiagnosis: string;
-  Medication: string;
+  previousDiagnosis: string;
+  medication: string;
 };
